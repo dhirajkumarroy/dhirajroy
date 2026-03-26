@@ -6,25 +6,85 @@
     <meta name="description" content="Technical blog by Dhiraj Roy covering backend development, AI/ML, Android, and automation.">
     <link rel="canonical" href="https://dhirajroy.com/blog">
     
-    <title>Blog - Dhiraj Roy</title>
+    <!-- Redirect to blog folder after 2 seconds -->
+    <meta http-equiv="refresh" content="2; url=/blog/">
+    
+    <title>Redirecting to Blog - Dhiraj Roy</title>
     
     <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <style>
+        .redirect-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--spacing-4xl) 0;
+        }
+        
+        .redirect-card {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl);
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: var(--spacing-xl) auto;
+        }
+        
+        .redirect-card h1 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .redirect-card p {
+            color: var(--gray);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .redirect-card .btn {
+            margin-top: var(--spacing-md);
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="navbar"></div>
     
     <main>
-        <section class="blog-section">
+        <section class="redirect-section">
             <div class="container">
-                <h1>Blog</h1>
-                <p class="section-description">Thoughts on backend development, AI/ML, automation, and software engineering.</p>
-                
-                <div class="blog-redirect">
-                    <div class="blog-card">
-                        <h2>Read My Latest Posts</h2>
-                        <p>Check out my technical blog where I share insights, tutorials, and experiences from my journey as a developer.</p>
-                        <a href="/blog/" class="btn btn-primary">Visit Blog →</a>
-                    </div>
+                <div class="redirect-card">
+                    <h1>📝 Redirecting to Blog</h1>
+                    <p>Taking you to my technical blog where I share insights about backend development, AI/ML, and automation.</p>
+                    <div class="spinner"></div>
+                    <p class="redirect-message">If you are not redirected automatically, click the button below:</p>
+                    <a href="/blog/" class="btn btn-primary">Go to Blog →</a>
                 </div>
             </div>
         </section>
@@ -37,6 +97,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadComponent('navbar', 'navbar');
             loadComponent('footer', 'footer');
+            
+            // Alternative: JavaScript redirect
+            setTimeout(() => {
+                window.location.href = '/blog/';
+            }, 2000);
         });
     </script>
 </body>
