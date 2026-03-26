@@ -4,8 +4,8 @@
     { "source": "/about", "destination": "/about.html" },
     { "source": "/projects", "destination": "/projects.html" },
     { "source": "/contact", "destination": "/contact.html" },
-    {"source": "/blog/:path*", "destination": "/blog/:path*"}
-    
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/blog/post/:path*", "destination": "/blog/post/:path*" }
   ],
   "cleanUrls": true,
   "trailingSlash": false,

@@ -6,69 +6,232 @@
     <meta name="description" content="Technical blog by Dhiraj Roy covering backend development, AI/ML, Android, and automation.">
     <link rel="canonical" href="https://dhirajroy.com/blog">
     
-    <!-- Redirect to blog folder after 2 seconds -->
-    <meta http-equiv="refresh" content="2; url=/blog/">
+    <title>Blog - Dhiraj Roy | Technical Articles & Tutorials</title>
     
-    <title>Redirecting to Blog - Dhiraj Roy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="/assets/css/main.css">
     
     <style>
-        .redirect-section {
-            min-height: 60vh;
+        /* Blog Page Styles */
+        .blog-main {
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+        }
+        
+        .blog-header {
+            text-align: center;
+            padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .blog-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            animation: pulse 2s infinite;
+        }
+        
+        .blog-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        .blog-stat {
+            text-align: center;
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .blog-stat-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+        
+        .blog-stat-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .blog-content {
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .blog-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: var(--spacing-4xl) 0;
+            position: relative;
         }
         
-        .redirect-card {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: var(--spacing-2xl);
-            background: var(--white);
+        .blog-card-image i {
+            font-size: 3rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .blog-card-category {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 1rem;
-            box-shadow: var(--shadow-lg);
-            animation: fadeInUp 0.6s ease;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
         }
         
-        .spinner {
+        .blog-card-content {
+            padding: var(--spacing-xl);
+        }
+        
+        .blog-card-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--dark);
+            line-height: 1.4;
+        }
+        
+        .blog-card-excerpt {
+            color: var(--gray);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-light);
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .loading-container {
+            text-align: center;
+            padding: var(--spacing-3xl);
+        }
+        
+        .loading-spinner {
             width: 50px;
             height: 50px;
-            border: 4px solid var(--gray-light);
+            border: 3px solid var(--gray-light);
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: var(--spacing-xl) auto;
+            margin: 0 auto var(--spacing-lg);
         }
         
-        .redirect-card h1 {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .redirect-card p {
+        .no-posts {
+            text-align: center;
+            padding: var(--spacing-3xl);
+            background: var(--white);
+            border-radius: 1rem;
             color: var(--gray);
-            margin-bottom: var(--spacing-lg);
         }
         
-        .redirect-card .btn {
-            margin-top: var(--spacing-md);
+        .no-posts i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary);
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @media (max-width: 768px) {
+            .blog-header h1 {
+                font-size: 2.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            
+            .blog-stats {
+                gap: var(--spacing-md);
+            }
+            
+            .blog-stat {
+                padding: var(--spacing-sm) var(--spacing-lg);
             }
         }
     </style>
@@ -76,15 +239,41 @@
 <body>
     <div id="navbar"></div>
     
-    <main>
-        <section class="redirect-section">
+    <main class="blog-main">
+        <!-- Blog Header -->
+        <section class="blog-header">
             <div class="container">
-                <div class="redirect-card">
-                    <h1>📝 Redirecting to Blog</h1>
-                    <p>Taking you to my technical blog where I share insights about backend development, AI/ML, and automation.</p>
-                    <div class="spinner"></div>
-                    <p class="redirect-message">If you are not redirected automatically, click the button below:</p>
-                    <a href="/blog/" class="btn btn-primary">Go to Blog →</a>
+                <span class="blog-badge">
+                    <i class="fas fa-blog"></i> Latest Articles
+                </span>
+                <h1>Technical Blog</h1>
+                <p class="section-description">Thoughts, tutorials, and insights on backend development, AI/ML, Android, and automation.</p>
+                
+                <div class="blog-stats">
+                    <div class="blog-stat">
+                        <span class="blog-stat-number" id="total-posts">0</span>
+                        <span class="blog-stat-label">Articles</span>
+                    </div>
+                    <div class="blog-stat">
+                        <span class="blog-stat-number">5+</span>
+                        <span class="blog-stat-label">Categories</span>
+                    </div>
+                    <div class="blog-stat">
+                        <span class="blog-stat-number">Monthly</span>
+                        <span class="blog-stat-label">Updates</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Posts Grid -->
+        <section class="blog-content">
+            <div class="container">
+                <div class="blog-grid" id="blogGrid">
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <p>Loading blog posts...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -94,14 +283,134 @@
     
     <script src="/assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            loadComponent('navbar', 'navbar');
-            loadComponent('footer', 'footer');
+        // Blog posts data from your existing posts
+        const blogPosts = [
+            {
+                id: "chatGpt5",
+                title: "ChatGPT-5: The Next Generation of AI",
+                filename: "chatGpt5.html",
+                excerpt: "Explore the revolutionary features of ChatGPT-5 and how it's transforming the way we interact with AI. Learn about its enhanced capabilities and real-world applications.",
+                category: "aiml",
+                date: "March 20, 2024",
+                readTime: "8 min read",
+                tags: ["AI", "ChatGPT", "Machine Learning"]
+            },
+            {
+                id: "how-gpt-5-is-helpful-for-college-students",
+                title: "How GPT-5 is Helpful for College Students",
+                filename: "how-gpt-5-is-helpful-for-college-students.html",
+                excerpt: "Discover how college students can leverage GPT-5 for research, study assistance, project help, and improving academic performance.",
+                category: "aiml",
+                date: "March 18, 2024",
+                readTime: "6 min read",
+                tags: ["AI", "Education", "GPT-5"]
+            },
+            {
+                id: "python",
+                title: "Python Programming: Complete Guide for Beginners",
+                filename: "python.html",
+                excerpt: "A comprehensive guide to Python programming language for beginners. Learn the basics, syntax, and start building your first application.",
+                category: "backend",
+                date: "March 15, 2024",
+                readTime: "12 min read",
+                tags: ["Python", "Programming", "Beginners"]
+            },
+            {
+                id: "python-roadmap",
+                title: "Python Developer Roadmap 2024",
+                filename: "python-roadmap.html",
+                excerpt: "Complete roadmap to becoming a Python developer in 2024. From basics to advanced concepts, frameworks, and career paths.",
+                category: "backend",
+                date: "March 10, 2024",
+                readTime: "10 min read",
+                tags: ["Python", "Career", "Roadmap"]
+            }
+        ];
+        
+        // Get category icon
+        function getCategoryIcon(category) {
+            const icons = {
+                'backend': 'fa-server',
+                'aiml': 'fa-brain',
+                'android': 'fa-android',
+                'automation': 'fa-robot',
+                'devops': 'fa-cloud'
+            };
+            return icons[category] || 'fa-newspaper';
+        }
+        
+        // Get category display name
+        function getCategoryName(category) {
+            const names = {
+                'backend': 'Backend',
+                'aiml': 'AI/ML',
+                'android': 'Android',
+                'automation': 'Automation',
+                'devops': 'DevOps'
+            };
+            return names[category] || 'Article';
+        }
+        
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+        
+        // Render blog posts
+        function renderBlogPosts() {
+            const blogGrid = document.getElementById('blogGrid');
             
-            // Alternative: JavaScript redirect
-            setTimeout(() => {
-                window.location.href = '/blog/';
-            }, 2000);
+            if (blogPosts.length === 0) {
+                blogGrid.innerHTML = `
+                    <div class="no-posts" style="grid-column: 1/-1;">
+                        <i class="fas fa-pen-fancy"></i>
+                        <h3>No blog posts yet</h3>
+                        <p>Check back soon for new articles and tutorials!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Update total posts count
+            document.getElementById('total-posts').textContent = blogPosts.length;
+            
+            blogGrid.innerHTML = blogPosts.map(post => `
+                <div class="blog-card" onclick="window.location.href='/blog/post/${post.filename}'">
+                    <div class="blog-card-image">
+                        <i class="fas ${getCategoryIcon(post.category)}"></i>
+                        <span class="blog-card-category">${getCategoryName(post.category)}</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>${escapeHtml(post.title)}</h3>
+                        <p class="blog-card-excerpt">${escapeHtml(post.excerpt)}</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date">
+                                <i class="far fa-calendar-alt"></i> ${post.date}
+                            </span>
+                            <span class="blog-card-read-time">
+                                <i class="far fa-clock"></i> ${post.readTime}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Load components
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('navbar', 'navbar');
+            await loadComponent('footer', 'footer');
+            
+            // Render blog posts
+            renderBlogPosts();
         });
     </script>
 </body>
