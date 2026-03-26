@@ -3,10 +3,7 @@
     { "source": "/", "destination": "/index.html" },
     { "source": "/about", "destination": "/about.html" },
     { "source": "/projects", "destination": "/projects.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-
-    { "source": "/blog/", "destination": "/blog/index.html" },
-    { "source": "/blog/:path*", "destination": "/blog/:path*" }
+    { "source": "/contact", "destination": "/contact.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false,
