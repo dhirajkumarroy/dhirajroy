@@ -163,39 +163,78 @@ a:hover {
   transition: var(--transition);
 }
 
-/* Hero Section */
+/* Update Hero Section - Full Width Text */
 .hero {
   padding: var(--spacing-xl) 0;
   background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xl);
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-text h1 {
   font-size: 3.5rem;
   margin-bottom: var(--spacing-md);
+  line-height: 1.2;
 }
 
-.hero-text .highlight {
+.hero-text h2 {
+  font-size: 2rem;
   color: var(--primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-buttons {
   display: flex;
   gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 50%;
-  box-shadow: var(--shadow-lg);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  .hero-buttons .btn {
+    width: 200px;
+  }
 }
 
 /* Skills Section */
