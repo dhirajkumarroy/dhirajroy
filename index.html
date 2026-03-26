@@ -1,180 +1,822 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Dhiraj Roy - Backend & AI/ML Engineer specializing in Spring Boot, Android, and n8n automation. Building scalable solutions and innovative products."
-    />
-    <meta
-      name="keywords"
-      content="Dhiraj Roy, Backend Developer, AI/ML Engineer, Android Developer, n8n Automation, Spring Boot"
-    />
-    <meta name="author" content="Dhiraj Roy" />
-    <link rel="canonical" href="https://dhirajroy.com/" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dhiraj Roy - Backend & AI/ML Engineer specializing in Spring Boot, Android, and n8n automation. Building scalable solutions and innovative products.">
+    <meta name="keywords" content="Dhiraj Roy, Backend Developer, AI/ML Engineer, Android Developer, n8n Automation, Spring Boot">
+    <meta name="author" content="Dhiraj Roy">
+    <link rel="canonical" href="https://dhirajroy.com/">
+    
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Dhiraj Roy - Backend & AI/ML Engineer" />
-    <meta
-      property="og:description"
-      content="Building scalable backend systems, AI solutions, and automation workflows."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dhirajroy.com/" />
-    <meta property="og:image" content="/assets/images/og-image.jpg" />
-
+    <meta property="og:title" content="Dhiraj Roy - Backend & AI/ML Engineer">
+    <meta property="og:description" content="Building scalable backend systems, AI solutions, and automation workflows.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dhirajroy.com/">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    
     <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Dhiraj Roy - Backend & AI/ML Engineer"
-    />
-    <meta
-      name="twitter:description"
-      content="Building scalable backend systems, AI solutions, and automation workflows."
-    />
-
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dhiraj Roy - Backend & AI/ML Engineer">
+    <meta name="twitter:description" content="Building scalable backend systems, AI solutions, and automation workflows.">
+    
     <title>Dhiraj Roy - Backend & AI/ML Engineer | Full Stack Developer</title>
-
+    
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="/assets/css/pages/home.css" />
-
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  </head>
-  <body>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <style>
+        /* Additional Homepage Specific Styles */
+        .featured-projects {
+            padding: var(--spacing-4xl) 0;
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-projects::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%);
+            animation: rotate 25s linear infinite reverse;
+        }
+        
+        .text-center {
+            text-align: center;
+            margin-top: var(--spacing-3xl);
+        }
+        
+        /* Floating Animation for Cards */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .skill-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .skill-card:nth-child(1) { animation-delay: 0s; }
+        .skill-card:nth-child(2) { animation-delay: 0.5s; }
+        .skill-card:nth-child(3) { animation-delay: 1s; }
+        .skill-card:nth-child(4) { animation-delay: 1.5s; }
+        
+        /* Enhanced Hero Section */
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        
+        /* Glow Effect on Buttons */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rotate 3s linear infinite;
+        }
+        
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced Project Cards for Homepage */
+        .featured-projects .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-projects .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .featured-projects .project-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Counter Animation */
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Mouse Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+        
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .mouse::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 2px;
+            animation: scrollWheel 1.5s infinite;
+        }
+        
+        @keyframes scrollWheel {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                display: none;
+            }
+            
+            .skill-card {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
     <!-- Navbar Component -->
     <div id="navbar"></div>
-
+    
     <main>
-      <!-- Hero Section - Without Image -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <div class="hero-text fade-in-up">
-              <h1>Hi, I'm <span class="highlight">Dhiraj Roy</span></h1>
-              <h2>Backend & AI/ML Engineer</h2>
-              <p>
-                Building scalable backend systems, intelligent AI solutions, and
-                automation workflows. Specializing in Spring Boot, AI/ML,
-                Android, and n8n automation.
-              </p>
-              <div class="hero-buttons">
-                <a href="/projects" class="btn btn-primary">View Projects</a>
-                <a href="/contact" class="btn btn-outline">Contact Me</a>
-              </div>
+        <!-- Hero Section with Particles -->
+        <section class="hero">
+            <div class="particles" id="particles"></div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-badge">
+                            <i class="fas fa-code"></i> Welcome to my portfolio
+                        </span>
+                        <h1 class="gradient-text">Hi, I'm <span class="highlight">Dhiraj Roy</span></h1>
+                        <h2>
+                            <span class="typing-text">Backend & AI/ML Engineer</span>
+                        </h2>
+                        <p>Building scalable backend systems, intelligent AI solutions, and automation workflows. Specializing in Spring Boot, AI/ML, Android, and n8n automation.</p>
+                        <div class="hero-buttons">
+                            <a href="/projects" class="btn btn-primary">
+                                <i class="fas fa-arrow-right"></i> View Projects
+                            </a>
+                            <a href="/contact" class="btn btn-outline">
+                                <i class="fas fa-comment"></i> Contact Me
+                            </a>
+                            <a href="/assets/resume.pdf" class="btn btn-outline" download>
+                                <i class="fas fa-download"></i> Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section class="skills-section">
-        <div class="container">
-          <h2 class="section-title">What I Do</h2>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <h3>🚀 Backend Development</h3>
-              <ul>
-                <li>Spring Boot & Microservices</li>
-                <li>REST APIs & GraphQL</li>
-                <li>Database Design & Optimization</li>
-                <li>System Architecture</li>
-              </ul>
+            
+            <div class="scroll-indicator" id="scrollIndicator">
+                <div class="mouse"></div>
+                <span style="color: var(--gray); font-size: 0.75rem;">Scroll Down</span>
             </div>
-            <div class="skill-card">
-              <h3>🤖 AI/ML Engineering</h3>
-              <ul>
-                <li>Machine Learning Models</li>
-                <li>Computer Vision</li>
-                <li>Natural Language Processing</li>
-                <li>Predictive Analytics</li>
-              </ul>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid-home">
+                    <div class="stat-card-home" data-count="5">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="counter-number" id="years-counter">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card-home" data-count="20">
+                        <div class="stat-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div class="counter-number" id="projects-counter">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card-home" data-count="50">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="counter-number" id="clients-counter">0</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-card-home" data-count="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="counter-number" id="downloads-counter">0</div>
+                        <div class="stat-label">App Downloads (K+)</div>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-              <h3>📱 Android Development</h3>
-              <ul>
-                <li>Kotlin & Java</li>
-                <li>Jetpack Compose</li>
-                <li>Firebase Integration</li>
-                <li>Play Store Publishing</li>
-              </ul>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">My Expertise</span>
+                    <h2 class="section-title">What I Do</h2>
+                    <p class="section-description">Specialized in modern technologies and best practices</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Backend Development</h3>
+                        <ul>
+                            <li>Spring Boot & Microservices</li>
+                            <li>REST APIs & GraphQL</li>
+                            <li>Database Design & Optimization</li>
+                            <li>System Architecture</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI/ML Engineering</h3>
+                        <ul>
+                            <li>Machine Learning Models</li>
+                            <li>Computer Vision</li>
+                            <li>Natural Language Processing</li>
+                            <li>Predictive Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <h3>Android Development</h3>
+                        <ul>
+                            <li>Kotlin & Java</li>
+                            <li>Jetpack Compose</li>
+                            <li>Firebase Integration</li>
+                            <li>Play Store Publishing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Automation & n8n</h3>
+                        <ul>
+                            <li>Workflow Automation</li>
+                            <li>n8n Custom Nodes</li>
+                            <li>API Integrations</li>
+                            <li>Process Optimization</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-              <h3>⚙️ Automation & n8n</h3>
-              <ul>
-                <li>Workflow Automation</li>
-                <li>n8n Custom Nodes</li>
-                <li>API Integrations</li>
-                <li>Process Optimization</li>
-              </ul>
+        </section>
+        
+        <!-- Featured Projects -->
+        <section class="featured-projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Recent Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">Some of my best work that showcases my skills</p>
+                </div>
+                <div class="projects-grid" id="featured-projects">
+                    <!-- Projects will be loaded via JavaScript -->
+                </div>
+                <div class="text-center">
+                    <a href="/projects" class="btn btn-outline">
+                        View All Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Featured Projects -->
-      <section class="featured-projects">
-        <div class="container">
-          <h2 class="section-title">Featured Projects</h2>
-          <div class="projects-grid" id="featured-projects">
-            <!-- Projects will be loaded via JavaScript -->
-          </div>
-          <div class="text-center">
-            <a href="/projects" class="btn btn-outline">View All Projects →</a>
-          </div>
-        </div>
-      </section>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Testimonials</span>
+                    <h2 class="section-title">What Clients Say</h2>
+                    <p class="section-description">Feedback from people I've worked with</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left"></i>
+                            <p>Dhiraj delivered exceptional backend solutions for our microservices architecture. His expertise in Spring Boot and system design was invaluable.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <strong>John Smith</strong>
+                                <span>CTO, TechCorp</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left"></i>
+                            <p>Working with Dhiraj on our ML project was a great experience. He built a fraud detection system with 99% accuracy that saved us millions.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <strong>Sarah Johnson</strong>
+                                <span>Data Science Lead, FinTech Inc</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left"></i>
+                            <p>The Android app Dhiraj built for us exceeded all expectations. Clean architecture, smooth performance, and great user experience.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <strong>Mike Chen</strong>
+                                <span>Product Manager, MobileApp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section-home">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Build Something Amazing?</h2>
+                    <p>Let's collaborate and bring your ideas to life. I'm always open to discussing new projects and opportunities.</p>
+                    <div class="cta-buttons">
+                        <a href="/contact" class="btn btn-primary">Start a Project</a>
+                        <a href="/about" class="btn btn-outline">Learn More About Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
+    
     <!-- Footer Component -->
     <div id="footer"></div>
-
+    
     <!-- JavaScript -->
     <script src="/assets/js/main.js"></script>
     <script>
-      // Load components
-      document.addEventListener("DOMContentLoaded", () => {
-        loadComponent("navbar", "navbar");
-        loadComponent("footer", "footer");
-
-        // Load featured projects
-        if (typeof SITE_CONFIG !== "undefined") {
-          const featuredProjects = SITE_CONFIG.projects.slice(0, 3);
-          const projectsGrid = document.getElementById("featured-projects");
-          if (projectsGrid) {
-            projectsGrid.innerHTML = featuredProjects
-              .map(
-                (project) => `
-                        <div class="project-card">
-                            <img src="/assets/images/${project.image}" alt="${project.title}" class="project-image" loading="lazy">
-                            <div class="project-content">
-                                <h3>${project.title}</h3>
-                                <p>${project.description}</p>
-                                <div class="project-tech">
-                                    ${project.tech.map((tech) => `<span class="tech-tag">${tech}</span>`).join("")}
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            updateCounter();
+        }
+        
+        // Intersection Observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const count = parseInt(target.getAttribute('data-count')) || 0;
+                    animateCounter(target, count);
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Load components and initialize
+        document.addEventListener("DOMContentLoaded", () => {
+            loadComponent("navbar", "navbar");
+            loadComponent("footer", "footer");
+            
+            // Create particles
+            createParticles();
+            
+            // Scroll indicator click
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Load featured projects
+            if (typeof SITE_CONFIG !== "undefined") {
+                const featuredProjects = SITE_CONFIG.projects.slice(0, 3);
+                const projectsGrid = document.getElementById("featured-projects");
+                if (projectsGrid) {
+                    projectsGrid.innerHTML = featuredProjects
+                        .map(
+                            (project) => `
+                            <div class="project-card">
+                                <div class="project-icon-header" style="background: linear-gradient(135deg, ${getCategoryColor(project.category)}, ${getCategoryColor(project.category)}cc);">
+                                    <div class="project-icon">
+                                        <i class="fas ${getCategoryIcon(project.category)}"></i>
+                                    </div>
                                 </div>
-                                <div class="project-links">
-                                    <a href="${project.github}" target="_blank" rel="noopener">GitHub →</a>
-                                    <a href="${project.demo}" target="_blank" rel="noopener">Live Demo →</a>
+                                <div class="project-content">
+                                    <h3>${escapeHtml(project.title)}</h3>
+                                    <p>${escapeHtml(project.description)}</p>
+                                    <div class="project-tech">
+                                        ${project.tech.map((tech) => `<span class="tech-tag">${escapeHtml(tech)}</span>`).join("")}
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="${project.github}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub →</a>
+                                        ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo →</a>` : ''}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `,
-              )
-              .join("");
-          }
+                        `,
+                        )
+                        .join("");
+                }
+            }
+            
+            // Observe counter elements
+            const counters = document.querySelectorAll('.counter-number');
+            counters.forEach(counter => {
+                const parent = counter.closest('.stat-card-home');
+                if (parent) {
+                    const count = parent.getAttribute('data-count');
+                    counter.setAttribute('data-count', count);
+                    counterObserver.observe(parent);
+                }
+            });
+        });
+        
+        // Helper functions
+        function getCategoryIcon(category) {
+            const icons = {
+                'backend': 'fa-server',
+                'ai_ml': 'fa-brain',
+                'android': 'fa-android',
+                'automation': 'fa-robot'
+            };
+            return icons[category] || 'fa-code';
         }
-      });
+        
+        function getCategoryColor(category) {
+            const colors = {
+                'backend': '#3b82f6',
+                'ai_ml': '#8b5cf6',
+                'android': '#10b981',
+                'automation': '#f59e0b'
+            };
+            return colors[category] || '#6b7280';
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
     </script>
-  </body>
+    
+    <style>
+        /* Additional Styles for New Sections */
+        .stats-section {
+            padding: var(--spacing-3xl) 0;
+            background: var(--white);
+        }
+        
+        .stats-grid-home {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-2xl);
+        }
+        
+        .stat-card-home {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .stat-card-home:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .stat-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .skill-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .testimonials-section {
+            padding: var(--spacing-4xl) 0;
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-2xl);
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .testimonial-content i {
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+        
+        .testimonial-content p {
+            color: var(--gray);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-light);
+        }
+        
+        .author-info strong {
+            display: block;
+            color: var(--dark);
+        }
+        
+        .author-info span {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .cta-section-home {
+            padding: var(--spacing-4xl) 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .cta-content h2::after {
+            background: var(--white);
+        }
+        
+        .cta-content p {
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons .btn-outline {
+            border-color: var(--white);
+            color: var(--white);
+        }
+        
+        .cta-buttons .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid-home {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</body>
 </html>
