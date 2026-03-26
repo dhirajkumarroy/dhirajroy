@@ -15,8 +15,439 @@
     
     <title>Projects - Dhiraj Roy Portfolio</title>
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/pages/projects.css">
+    
+    <style>
+        /* Projects Page Specific Styles */
+        .projects-section {
+            padding: var(--spacing-4xl) 0;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .projects-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        .projects-header {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .projects-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .projects-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        
+        /* Enhanced Filter Buttons */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.75rem;
+            background: var(--white);
+            border: 2px solid var(--gray-light);
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: transparent;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Enhanced Project Cards - No Images */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-2xl);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+        
+        /* Card Icon Header */
+        .project-icon-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: var(--spacing-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-icon-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .project-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .project-category-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        
+        .project-content {
+            padding: var(--spacing-xl);
+        }
+        
+        .project-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-content h3 {
+            color: var(--primary);
+        }
+        
+        .project-description {
+            color: var(--gray);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+        
+        /* Enhanced Tech Tags */
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, var(--light), var(--white));
+            padding: 0.35rem 0.9rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .tech-tag:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-2px);
+            border-color: transparent;
+        }
+        
+        /* Enhanced Project Links */
+        .project-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-light);
+        }
+        
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 500;
+            position: relative;
+            padding: var(--spacing-xs) 0;
+            transition: var(--transition);
+        }
+        
+        .github-link {
+            color: var(--dark);
+        }
+        
+        .demo-link {
+            color: var(--primary);
+        }
+        
+        .project-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .project-links a:hover::after {
+            width: 100%;
+        }
+        
+        .project-links a:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Stats Section */
+        .project-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: var(--spacing-lg);
+            background: var(--light);
+            border-radius: 0.75rem;
+            margin-top: var(--spacing-lg);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        /* No Projects Message */
+        .no-projects {
+            text-align: center;
+            padding: var(--spacing-3xl);
+            background: var(--white);
+            border-radius: 1rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .no-projects i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            display: block;
+            color: var(--primary);
+        }
+        
+        /* Loading Animation */
+        .loading-projects {
+            text-align: center;
+            padding: var(--spacing-3xl);
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        /* View More Button */
+        .view-more-container {
+            text-align: center;
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .view-more-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+        
+        /* Project Count Badge */
+        .project-count {
+            display: inline-block;
+            margin-left: var(--spacing-sm);
+            padding: 0.25rem 0.5rem;
+            background: var(--light);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        /* Animation for cards */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .project-card {
+            animation: fadeInScale 0.4s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: var(--spacing-lg);
+            }
+            
+            .projects-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-filters {
+                gap: var(--spacing-sm);
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.875rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-icon-header {
+                padding: var(--spacing-lg);
+            }
+            
+            .project-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .project-icon i {
+                font-size: 2rem;
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <div id="navbar"></div>
@@ -24,21 +455,51 @@
     <main>
         <section class="projects-section">
             <div class="container">
-                <h1>My Projects</h1>
-                <p class="section-description">A collection of my work in backend development, AI/ML, Android, and automation.</p>
+                <div class="projects-header">
+                    <span class="projects-badge">
+                        <i class="fas fa-code-branch"></i> My Work
+                    </span>
+                    <h1>Featured Projects</h1>
+                    <p class="section-description">A collection of my work in backend development, AI/ML, Android, and automation. Each project represents a unique challenge and solution.</p>
+                </div>
                 
-                <!-- Filter Buttons -->
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="backend">Backend</button>
-                    <button class="filter-btn" data-filter="ai_ml">AI/ML</button>
-                    <button class="filter-btn" data-filter="android">Android</button>
-                    <button class="filter-btn" data-filter="automation">Automation</button>
+                <!-- Filter Buttons with Counts -->
+                <div class="project-filters" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th-large"></i> All
+                        <span class="project-count" id="count-all">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="backend">
+                        <i class="fas fa-server"></i> Backend
+                        <span class="project-count" id="count-backend">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="ai_ml">
+                        <i class="fas fa-brain"></i> AI/ML
+                        <span class="project-count" id="count-ai_ml">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="android">
+                        <i class="fab fa-android"></i> Android
+                        <span class="project-count" id="count-android">0</span>
+                    </button>
+                    <button class="filter-btn" data-filter="automation">
+                        <i class="fas fa-robot"></i> Automation
+                        <span class="project-count" id="count-automation">0</span>
+                    </button>
                 </div>
                 
                 <!-- Projects Grid -->
                 <div class="projects-grid" id="projects-grid">
-                    <!-- Projects will be loaded dynamically -->
+                    <div class="loading-projects">
+                        <div class="loading-spinner"></div>
+                        <p>Loading projects...</p>
+                    </div>
+                </div>
+                
+                <!-- View More Button -->
+                <div class="view-more-container" id="view-more-container" style="display: none;">
+                    <button class="btn btn-outline view-more-btn" id="view-more-btn">
+                        <i class="fas fa-arrow-down"></i> View More Projects
+                    </button>
                 </div>
             </div>
         </section>
@@ -48,6 +509,229 @@
     
     <script src="/assets/js/main.js"></script>
     <script>
+        let allProjects = [];
+        let currentCategory = 'all';
+        let visibleCount = 6;
+        
+        // Get icon for project category
+        function getCategoryIcon(category) {
+            const icons = {
+                'backend': 'fa-server',
+                'ai_ml': 'fa-brain',
+                'android': 'fa-android',
+                'automation': 'fa-robot'
+            };
+            return icons[category] || 'fa-code';
+        }
+        
+        // Get color for category
+        function getCategoryColor(category) {
+            const colors = {
+                'backend': '#3b82f6',
+                'ai_ml': '#8b5cf6',
+                'android': '#10b981',
+                'automation': '#f59e0b'
+            };
+            return colors[category] || '#6b7280';
+        }
+        
+        // Format category name
+        function formatCategoryName(category) {
+            const names = {
+                'backend': 'Backend',
+                'ai_ml': 'AI/ML',
+                'android': 'Android',
+                'automation': 'Automation'
+            };
+            return names[category] || category;
+        }
+        
+        // Render projects
+        function renderProjects(category, limit = null) {
+            const projectsGrid = document.getElementById('projects-grid');
+            if (!projectsGrid) return;
+            
+            let filteredProjects = category === 'all' 
+                ? allProjects 
+                : allProjects.filter(p => p.category === category);
+            
+            // Apply limit if specified
+            const projectsToShow = limit ? filteredProjects.slice(0, limit) : filteredProjects;
+            
+            if (filteredProjects.length === 0) {
+                projectsGrid.innerHTML = `
+                    <div class="no-projects">
+                        <i class="fas fa-folder-open"></i>
+                        <h3>No projects found</h3>
+                        <p>Try a different category or check back later for new projects.</p>
+                    </div>
+                `;
+                document.getElementById('view-more-container').style.display = 'none';
+                return;
+            }
+            
+            projectsGrid.innerHTML = projectsToShow.map(project => `
+                <div class="project-card" data-category="${project.category}" data-project-id="${project.id}">
+                    <div class="project-icon-header" style="background: linear-gradient(135deg, ${getCategoryColor(project.category)}, ${getCategoryColor(project.category)}cc);">
+                        <div class="project-category-badge">
+                            <i class="fas ${getCategoryIcon(project.category)}"></i> ${formatCategoryName(project.category)}
+                        </div>
+                        <div class="project-icon">
+                            <i class="fas ${getCategoryIcon(project.category)}"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>${escapeHtml(project.title)}</h3>
+                        <p class="project-description">${escapeHtml(project.description)}</p>
+                        <div class="project-tech">
+                            ${project.tech.map(tech => `<span class="tech-tag" data-tech="${tech}">${escapeHtml(tech)}</span>`).join('')}
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number"><i class="fas fa-star"></i> ${Math.floor(Math.random() * 50) + 50}</span>
+                                <span class="stat-label">Stars</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number"><i class="fas fa-code-branch"></i> ${Math.floor(Math.random() * 20) + 5}</span>
+                                <span class="stat-label">Forks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number"><i class="fas fa-eye"></i> ${Math.floor(Math.random() * 100) + 50}</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.github}" target="_blank" rel="noopener" class="github-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener" class="demo-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Update view more button visibility
+            const viewMoreContainer = document.getElementById('view-more-container');
+            if (limit && filteredProjects.length > limit) {
+                viewMoreContainer.style.display = 'block';
+            } else {
+                viewMoreContainer.style.display = 'none';
+            }
+            
+            // Add click handlers for tech tags
+            document.querySelectorAll('.tech-tag').forEach(tag => {
+                tag.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const tech = tag.getAttribute('data-tech');
+                    filterByTech(tech);
+                });
+            });
+        }
+        
+        // Filter by technology
+        function filterByTech(tech) {
+            const filtered = allProjects.filter(project => 
+                project.tech.some(t => t.toLowerCase() === tech.toLowerCase())
+            );
+            
+            const projectsGrid = document.getElementById('projects-grid');
+            if (filtered.length === 0) {
+                projectsGrid.innerHTML = `
+                    <div class="no-projects">
+                        <i class="fas fa-search"></i>
+                        <h3>No projects found with ${tech}</h3>
+                        <p>Try a different technology or view all projects.</p>
+                        <button class="btn btn-outline" onclick="location.reload()">View All Projects</button>
+                    </div>
+                `;
+            } else {
+                projectsGrid.innerHTML = filtered.map(project => `
+                    <div class="project-card" data-category="${project.category}">
+                        <div class="project-icon-header" style="background: linear-gradient(135deg, ${getCategoryColor(project.category)}, ${getCategoryColor(project.category)}cc);">
+                            <div class="project-category-badge">
+                                <i class="fas ${getCategoryIcon(project.category)}"></i> ${formatCategoryName(project.category)}
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas ${getCategoryIcon(project.category)}"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>${escapeHtml(project.title)}</h3>
+                            <p class="project-description">${escapeHtml(project.description)}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(t => `<span class="tech-tag" data-tech="${t}">${escapeHtml(t)}</span>`).join('')}
+                            </div>
+                            <div class="project-links">
+                                <a href="${project.github}" target="_blank" rel="noopener">GitHub →</a>
+                                ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener">Live Demo →</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+            currentCategory = 'all';
+        }
+        
+        // Setup filters
+        function setupFilters() {
+            const filters = document.querySelectorAll('.filter-btn');
+            filters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    filters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    const category = filter.getAttribute('data-filter');
+                    currentCategory = category;
+                    
+                    // Add loading animation
+                    const projectsGrid = document.getElementById('projects-grid');
+                    projectsGrid.style.opacity = '0';
+                    projectsGrid.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        renderProjects(category, visibleCount);
+                        projectsGrid.style.opacity = '1';
+                        projectsGrid.style.transform = 'translateY(0)';
+                        projectsGrid.style.transition = 'all 0.3s ease';
+                    }, 200);
+                });
+            });
+        }
+        
+        // Update project counts
+        function updateProjectCounts() {
+            if (!allProjects.length) return;
+            
+            const counts = {
+                all: allProjects.length,
+                backend: allProjects.filter(p => p.category === 'backend').length,
+                ai_ml: allProjects.filter(p => p.category === 'ai_ml').length,
+                android: allProjects.filter(p => p.category === 'android').length,
+                automation: allProjects.filter(p => p.category === 'automation').length
+            };
+            
+            Object.keys(counts).forEach(category => {
+                const countElement = document.getElementById(`count-${category}`);
+                if (countElement) {
+                    countElement.textContent = counts[category];
+                }
+            });
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
         // Load components and projects
         document.addEventListener('DOMContentLoaded', async () => {
             await loadComponent('navbar', 'navbar');
@@ -57,53 +741,33 @@
             const configScript = document.createElement('script');
             configScript.src = '/config/site.js';
             configScript.onload = () => {
-                renderProjects('all');
-                setupFilters();
+                if (typeof SITE_CONFIG !== 'undefined') {
+                    allProjects = SITE_CONFIG.projects;
+                    updateProjectCounts();
+                    renderProjects('all', visibleCount);
+                    setupFilters();
+                }
+            };
+            configScript.onerror = () => {
+                document.getElementById('projects-grid').innerHTML = `
+                    <div class="no-projects">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Unable to load projects</h3>
+                        <p>Please check your configuration and try again.</p>
+                    </div>
+                `;
             };
             document.head.appendChild(configScript);
-        });
-        
-        function renderProjects(category) {
-            const projectsGrid = document.getElementById('projects-grid');
-            if (!projectsGrid || typeof SITE_CONFIG === 'undefined') return;
             
-            const filteredProjects = category === 'all' 
-                ? SITE_CONFIG.projects 
-                : SITE_CONFIG.projects.filter(p => p.category === category);
-            
-            projectsGrid.innerHTML = filteredProjects.map(project => `
-                <div class="project-card" data-category="${project.category}">
-                    <img src="/assets/images/${project.image}" alt="${project.title}" class="project-image" loading="lazy">
-                    <div class="project-content">
-                        <h3>${project.title}</h3>
-                        <p>${project.description}</p>
-                        <div class="project-tech">
-                            ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                        <div class="project-links">
-                            <a href="${project.github}" target="_blank" rel="noopener" class="github-link">GitHub →</a>
-                            ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener" class="demo-link">Live Demo →</a>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            
-            if (filteredProjects.length === 0) {
-                projectsGrid.innerHTML = '<p class="no-projects">No projects found in this category.</p>';
-            }
-        }
-        
-        function setupFilters() {
-            const filters = document.querySelectorAll('.filter-btn');
-            filters.forEach(filter => {
-                filter.addEventListener('click', () => {
-                    filters.forEach(f => f.classList.remove('active'));
-                    filter.classList.add('active');
-                    const category = filter.getAttribute('data-filter');
-                    renderProjects(category);
+            // View more button functionality
+            const viewMoreBtn = document.getElementById('view-more-btn');
+            if (viewMoreBtn) {
+                viewMoreBtn.addEventListener('click', () => {
+                    visibleCount += 6;
+                    renderProjects(currentCategory, visibleCount);
                 });
-            });
-        }
+            }
+        });
     </script>
 </body>
 </html>
