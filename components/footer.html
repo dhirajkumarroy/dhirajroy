@@ -8,10 +8,17 @@
   
   <div class="footer-container">
     <div class="footer-content">
+      <!-- About Section with Image -->
       <div class="footer-section fade-in-up">
-        <div class="footer-logo">
-          <span class="logo-icon">&lt;/&gt;</span>
-          <h3>Dhiraj<span>Roy</span></h3>
+        <div class="footer-about">
+          <div class="footer-avatar">
+            <img src="/assets/images/profile-small.jpg" alt="Dhiraj Roy" class="avatar-img">
+            <div class="avatar-status"></div>
+          </div>
+          <div class="footer-logo">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <h3>Dhiraj<span>Roy</span></h3>
+          </div>
         </div>
         <p class="footer-description">Building scalable backend systems, AI solutions, and automation workflows. Passionate about creating innovative solutions that make a difference.</p>
         
@@ -24,35 +31,41 @@
             <i class="fas fa-map-marker-alt"></i>
             <span>India (Available Worldwide)</span>
           </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Response within 24h</span>
+          </div>
         </div>
       </div>
       
+      <!-- Quick Links - Compact -->
       <div class="footer-section fade-in-up" style="animation-delay: 0.1s">
         <h4><i class="fas fa-link"></i> Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="/">
-            <i class="fas fa-chevron-right"></i>
+        <div class="quick-links-grid">
+          <a href="/" class="quick-link">
+            <i class="fas fa-home"></i>
             <span>Home</span>
-          </a></li>
-          <li><a href="/projects">
-            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="/projects" class="quick-link">
+            <i class="fas fa-code-branch"></i>
             <span>Projects</span>
-          </a></li>
-          <li><a href="/about">
-            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="/about" class="quick-link">
+            <i class="fas fa-user"></i>
             <span>About</span>
-          </a></li>
-          <li><a href="/blog">
-            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="/blog" class="quick-link">
+            <i class="fas fa-blog"></i>
             <span>Blog</span>
-          </a></li>
-          <li><a href="/contact">
-            <i class="fas fa-chevron-right"></i>
+          </a>
+          <a href="/contact" class="quick-link">
+            <i class="fas fa-envelope"></i>
             <span>Contact</span>
-          </a></li>
-        </ul>
+          </a>
+        </div>
       </div>
       
+      <!-- Tech Stack - Compact Tags -->
       <div class="footer-section fade-in-up" style="animation-delay: 0.2s">
         <h4><i class="fas fa-code"></i> Tech Stack</h4>
         <div class="tech-stack">
@@ -64,36 +77,37 @@
           <span class="tech-tag">Docker</span>
           <span class="tech-tag">K8s</span>
           <span class="tech-tag">AWS</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
         </div>
       </div>
       
+      <!-- Connect & Newsletter - Compact -->
       <div class="footer-section fade-in-up" style="animation-delay: 0.3s">
         <h4><i class="fas fa-share-alt"></i> Connect With Me</h4>
-        <div class="social-links">
-          <a href="https://github.com/dhirajroy" target="_blank" rel="noopener" class="social-link github">
+        <div class="social-links-horizontal">
+          <a href="https://github.com/dhirajroy" target="_blank" rel="noopener" class="social-icon github">
             <i class="fab fa-github"></i>
-            <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/dhirajroy" target="_blank" rel="noopener" class="social-link linkedin">
+          <a href="https://linkedin.com/in/dhirajroy" target="_blank" rel="noopener" class="social-icon linkedin">
             <i class="fab fa-linkedin-in"></i>
-            <span>LinkedIn</span>
           </a>
-          <a href="https://twitter.com/dhirajroy" target="_blank" rel="noopener" class="social-link twitter">
+          <a href="https://twitter.com/dhirajroy" target="_blank" rel="noopener" class="social-icon twitter">
             <i class="fab fa-twitter"></i>
-            <span>Twitter</span>
           </a>
-          <a href="https://stackoverflow.com/users/dhirajroy" target="_blank" rel="noopener" class="social-link stackoverflow">
+          <a href="https://stackoverflow.com/users/dhirajroy" target="_blank" rel="noopener" class="social-icon stackoverflow">
             <i class="fab fa-stack-overflow"></i>
-            <span>Stack Overflow</span>
+          </a>
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
           </a>
         </div>
         
-        <div class="newsletter">
+        <div class="newsletter-compact">
           <h4><i class="fas fa-envelope-open-text"></i> Newsletter</h4>
-          <p>Get updates on my latest projects and blog posts.</p>
-          <form id="newsletter-form" class="newsletter-form">
+          <form id="newsletter-form" class="newsletter-form-compact">
             <input type="email" placeholder="Your email address" required>
-            <button type="submit" class="newsletter-btn">
+            <button type="submit" class="newsletter-btn-compact">
               <i class="fas fa-paper-plane"></i>
             </button>
           </form>
@@ -105,14 +119,13 @@
       <div class="footer-bottom-content">
         <p>&copy; <span id="current-year"></span> Dhiraj Roy. All rights reserved.</p>
         <div class="footer-bottom-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
           <a href="/sitemap.xml">Sitemap</a>
         </div>
         <div class="back-to-top">
           <button id="backToTop" class="back-to-top-btn" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
-            <span>Top</span>
           </button>
         </div>
       </div>
@@ -121,7 +134,7 @@
 </footer>
 
 <style>
-  /* Footer Styles */
+  /* Enhanced Footer Styles - Compact & Modern */
   .footer {
     background: linear-gradient(135deg, var(--dark, #0f172a) 0%, var(--dark-light, #1e293b) 100%);
     color: var(--white, #ffffff);
@@ -157,21 +170,59 @@
   
   .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-2xl, 2rem);
-    margin-bottom: var(--spacing-3xl, 3rem);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-xl, 1.5rem);
+    margin-bottom: var(--spacing-2xl, 2rem);
   }
   
-  /* Footer Sections */
-  .footer-section {
-    animation: fadeInUp 0.6s ease backwards;
+  /* About Section with Avatar */
+  .footer-about {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: var(--spacing-lg, 1.5rem);
+  }
+  
+  .footer-avatar {
+    position: relative;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-avatar:hover .avatar-img {
+    transform: scale(1.05);
+  }
+  
+  .avatar-status {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #10b981;
+    border-radius: 50%;
+    border: 2px solid var(--dark);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
   }
   
   .footer-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: var(--spacing-lg, 1.5rem);
+    gap: 0.5rem;
   }
   
   .logo-icon {
@@ -189,7 +240,7 @@
   }
   
   .footer-logo h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     margin: 0;
     background: linear-gradient(135deg, white, var(--primary-light, #60a5fa));
     -webkit-background-clip: text;
@@ -206,21 +257,24 @@
   
   .footer-description {
     color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-lg, 1.5rem);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md, 1rem);
+    font-size: 0.9rem;
   }
   
   .footer-contact-info {
-    margin-top: var(--spacing-lg, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
   
   .contact-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: var(--spacing-sm, 0.75rem);
     color: rgba(255, 255, 255, 0.7);
     transition: var(--transition, all 0.3s ease);
+    font-size: 0.85rem;
   }
   
   .contact-item:hover {
@@ -231,6 +285,7 @@
   .contact-item i {
     width: 20px;
     color: var(--primary, #3b82f6);
+    font-size: 0.9rem;
   }
   
   .contact-item a {
@@ -243,54 +298,53 @@
     color: var(--white, #ffffff);
   }
   
-  /* Footer Links */
-  .footer-section h4 {
-    font-size: 1.2rem;
-    margin-bottom: var(--spacing-lg, 1.5rem);
+  /* Quick Links Grid - Horizontal */
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .quick-link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition, all 0.3s ease);
+    font-size: 0.85rem;
+  }
+  
+  .quick-link i {
+    width: 16px;
+    font-size: 0.8rem;
+  }
+  
+  .quick-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white, #ffffff);
+    transform: translateX(3px);
+  }
+  
+  /* Footer Section Headers */
+  .footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md, 1rem);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
   }
   
   .footer-section h4 i {
     color: var(--primary, #3b82f6);
+    font-size: 0.9rem;
   }
   
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: var(--spacing-sm, 0.75rem);
-  }
-  
-  .footer-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: var(--transition, all 0.3s ease);
-    position: relative;
-  }
-  
-  .footer-links a i {
-    font-size: 0.7rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .footer-links a:hover {
-    color: var(--white, #ffffff);
-    transform: translateX(5px);
-  }
-  
-  .footer-links a:hover i {
-    transform: translateX(3px);
-  }
-  
-  /* Tech Stack Tags */
+  /* Tech Stack - Compact Tags */
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
@@ -298,133 +352,115 @@
   }
   
   .tech-tag {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.35rem 0.8rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.3rem 0.7rem;
     border-radius: 2rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     transition: var(--transition, all 0.3s ease);
     cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
   }
   
   .tech-tag:hover {
     background: linear-gradient(135deg, var(--primary, #3b82f6), var(--secondary, #8b5cf6));
     transform: translateY(-2px);
+    color: white;
   }
   
-  /* Social Links */
-  .social-links {
+  /* Social Links - Horizontal Icons */
+  .social-links-horizontal {
     display: flex;
-    flex-direction: column;
     gap: 0.75rem;
-    margin-bottom: var(--spacing-xl, 2rem);
+    margin-bottom: var(--spacing-lg, 1.5rem);
+    flex-wrap: wrap;
   }
   
-  .social-link {
-    display: inline-flex;
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: var(--transition, all 0.3s ease);
-    position: relative;
-    overflow: hidden;
+    font-size: 1.1rem;
   }
   
-  .social-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s ease;
+  .social-icon:hover {
+    transform: translateY(-3px);
+    color: white;
   }
   
-  .social-link:hover::before {
-    left: 100%;
+  .social-icon.github:hover { background: #333; }
+  .social-icon.linkedin:hover { background: #0077b5; }
+  .social-icon.twitter:hover { background: #1da1f2; }
+  .social-icon.stackoverflow:hover { background: #f48024; }
+  .social-icon.whatsapp:hover { background: #25d366; }
+  
+  /* Newsletter - Compact */
+  .newsletter-compact {
+    margin-top: var(--spacing-md, 1rem);
   }
   
-  .social-link:hover {
-    transform: translateX(5px);
-    color: var(--white, #ffffff);
+  .newsletter-compact h4 {
+    margin-bottom: var(--spacing-sm, 0.75rem);
   }
   
-  .social-link.github:hover { background: #333; }
-  .social-link.linkedin:hover { background: #0077b5; }
-  .social-link.twitter:hover { background: #1da1f2; }
-  .social-link.stackoverflow:hover { background: #f48024; }
-  
-  .social-link i {
-    font-size: 1.2rem;
-    width: 20px;
-  }
-  
-  /* Newsletter */
-  .newsletter {
-    margin-top: var(--spacing-xl, 2rem);
-  }
-  
-  .newsletter p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.875rem;
-    margin-bottom: var(--spacing-md, 1rem);
-  }
-  
-  .newsletter-form {
+  .newsletter-form-compact {
     display: flex;
     gap: 0.5rem;
   }
   
-  .newsletter-form input {
+  .newsletter-form-compact input {
     flex: 1;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0.5rem;
     background: rgba(255, 255, 255, 0.05);
     color: var(--white, #ffffff);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     transition: var(--transition, all 0.3s ease);
   }
   
-  .newsletter-form input:focus {
+  .newsletter-form-compact input:focus {
     outline: none;
     border-color: var(--primary, #3b82f6);
     background: rgba(255, 255, 255, 0.1);
   }
   
-  .newsletter-form input::placeholder {
+  .newsletter-form-compact input::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
   }
   
-  .newsletter-btn {
+  .newsletter-btn-compact {
     background: linear-gradient(135deg, var(--primary, #3b82f6), var(--secondary, #8b5cf6));
     border: none;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: var(--transition, all 0.3s ease);
     color: white;
   }
   
-  .newsletter-btn:hover {
+  .newsletter-btn-compact:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
   }
   
-  .newsletter-btn i {
-    font-size: 1rem;
+  .newsletter-btn-compact i {
+    font-size: 0.8rem;
   }
   
   /* Footer Bottom */
   .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: var(--spacing-xl, 2rem);
-    margin-top: var(--spacing-xl, 2rem);
+    padding-top: var(--spacing-lg, 1.5rem);
+    margin-top: var(--spacing-lg, 1.5rem);
   }
   
   .footer-bottom-content {
@@ -432,24 +468,24 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--spacing-md, 1rem);
+    gap: var(--spacing-sm, 0.75rem);
   }
   
   .footer-bottom p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
     margin: 0;
   }
   
   .footer-bottom-links {
     display: flex;
-    gap: var(--spacing-lg, 1.5rem);
+    gap: var(--spacing-md, 1rem);
   }
   
   .footer-bottom-links a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     transition: var(--transition, all 0.3s ease);
   }
   
@@ -457,19 +493,20 @@
     color: var(--white, #ffffff);
   }
   
-  /* Back to Top Button */
+  /* Back to Top Button - Compact */
   .back-to-top-btn {
     background: linear-gradient(135deg, var(--primary, #3b82f6), var(--secondary, #8b5cf6));
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 0.75rem;
     cursor: pointer;
     transition: var(--transition, all 0.3s ease);
     color: white;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
+    justify-content: center;
+    font-size: 1rem;
   }
   
   .back-to-top-btn:hover {
@@ -489,11 +526,15 @@
     }
   }
   
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease backwards;
+  }
+  
   /* Responsive Design */
   @media (max-width: 968px) {
     .footer-content {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-xl, 1.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-lg, 1.25rem);
     }
   }
   
@@ -502,35 +543,50 @@
       padding: var(--spacing-xl, 2rem) var(--spacing-md, 1rem);
     }
     
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl, 1.5rem);
+    }
+    
     .footer-bottom-content {
       flex-direction: column;
       text-align: center;
+      gap: var(--spacing-sm, 0.75rem);
     }
     
     .footer-bottom-links {
       justify-content: center;
     }
     
-    .newsletter-form {
-      flex-direction: column;
+    .quick-links-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
     
-    .newsletter-btn {
-      width: 100%;
-    }
-    
-    .social-link {
-      width: 100%;
+    .social-links-horizontal {
+      justify-content: center;
     }
   }
   
   @media (max-width: 480px) {
-    .footer-content {
-      grid-template-columns: 1fr;
+    .footer-about {
+      flex-direction: column;
+      text-align: center;
     }
     
-    .footer-logo h3 {
-      font-size: 1.25rem;
+    .footer-logo {
+      justify-content: center;
+    }
+    
+    .contact-item {
+      justify-content: center;
+    }
+    
+    .footer-description {
+      text-align: center;
+    }
+    
+    .quick-links-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -580,7 +636,7 @@
           const email = input.value;
           
           if (email && isValidEmail(email)) {
-            const button = newsletterForm.querySelector('.newsletter-btn');
+            const button = newsletterForm.querySelector('.newsletter-btn-compact');
             const originalHTML = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             button.disabled = true;
@@ -623,17 +679,18 @@
           position: fixed;
           bottom: 20px;
           right: 20px;
-          padding: 1rem 1.5rem;
+          padding: 0.75rem 1.25rem;
           background: ${colors[type]};
           color: white;
-          border-radius: 0.75rem;
+          border-radius: 0.5rem;
           z-index: 10000;
           animation: slideInRight 0.3s ease;
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.75rem;
           box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
           font-weight: 500;
+          font-size: 0.875rem;
         `;
         
         const closeBtn = notification.querySelector('.notification-close');
@@ -641,7 +698,7 @@
           background: none;
           border: none;
           color: white;
-          font-size: 1.5rem;
+          font-size: 1.25rem;
           cursor: pointer;
           padding: 0;
           margin-left: 0.5rem;
@@ -700,7 +757,6 @@
         tag.addEventListener('click', () => {
           const tech = tag.textContent;
           showNotification(`Filtering projects by ${tech}`, 'info');
-          // You can add actual filtering logic here
         });
       });
     });
