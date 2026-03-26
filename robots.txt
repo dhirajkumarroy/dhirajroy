@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /components/
+Disallow: /config/
+
+Sitemap: https://dhirajroy.com/sitemap.xml
