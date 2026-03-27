@@ -66,13 +66,23 @@
     color: var(--dark);
 }
 
-/* .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Fixed gradient text – bright and animated */
+.gradient-text {
+    background: linear-gradient(135deg, #ff6b6b, #f06595, #5f27cd);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-} */
- 
+    font-weight: 800;
+    display: inline-block;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 .hero-subtext {
     font-size: 1.125rem;
