@@ -1,7 +1,22 @@
+# Allow all bots to crawl
 User-agent: *
 Allow: /
+
+# Disallow internal directories
 Disallow: /assets/
 Disallow: /components/
-Disallow: /config/
 
+# Allow main pages
+Allow: /$
+Allow: /about$
+Allow: /projects$
+Allow: /contact$
+
+# Sitemap location
 Sitemap: https://dhirajroy.com/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
+# Specify host
+Host: https://dhirajroy.com
