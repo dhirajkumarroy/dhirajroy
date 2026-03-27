@@ -27,12 +27,10 @@ function renderFilteredProjects() {
     const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
     
     let filtered = allProjects.filter(project => {
-        // Search filter
         const matchesSearch = searchTerm === '' || 
             project.title.toLowerCase().includes(searchTerm) ||
             project.description.toLowerCase().includes(searchTerm);
         
-        // Tag filter (simulate tags based on description)
         let matchesTag = true;
         if (activeFilter !== 'all') {
             const techKeywords = {
@@ -62,7 +60,11 @@ function renderFilteredProjects() {
     noResults.style.display = 'none';
     container.innerHTML = filtered.map(project => `
         <div class="project-card">
-            <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Project+Image'">
+            <img src="${project.image}" 
+                 alt="${project.title}" 
+                 class="project-image" 
+                 loading="lazy" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23667eea\'/%3E%3Ctext x=\'50%%\' y=\'50%%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'16\' font-family=\'Inter\'%3E${escapeHtml(project.title)}%3C/text%3E%3C/svg%3E'">
             <div class="project-content">
                 <h3 class="project-title">${escapeHtml(project.title)}</h3>
                 <p class="project-description">${escapeHtml(project.description)}</p>
@@ -79,7 +81,6 @@ function renderFilteredProjects() {
 }
 
 function generateTags(project) {
-    // Simple tag generation based on title/description
     const tags = [];
     const text = (project.title + ' ' + project.description).toLowerCase();
     
@@ -90,8 +91,7 @@ function generateTags(project) {
     if (text.includes('microservice')) tags.push('Microservices');
     if (text.includes('automation')) tags.push('Automation');
     
-    // Limit to first 3 tags
-    return tags.slice(0, 3).map(tag => `<span class="project-tag">${tag}</span>`).join('');
+    return tags.slice(0, 3).map(tag => `<span class="project-tag">${escapeHtml(tag)}</span>`).join('');
 }
 
 function initFilters() {
