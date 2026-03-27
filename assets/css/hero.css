@@ -322,6 +322,12 @@
     animation-delay: 2s;
 }
 
+.floating-card-4 {
+    bottom: 10%;
+    left: -5%;
+    animation-delay: 1.5s;
+}
+
 .floating-icon {
     font-size: 1.25rem;
 }
