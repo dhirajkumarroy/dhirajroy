@@ -281,3 +281,47 @@ a:focus-visible {
     /* Add dark mode styles if needed */
     /* This is optional and can be expanded later */
 }
+
+/* Social Links with Icons */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--primary-gradient);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+    transition: var(--transition);
+}
+
+.social-links a:hover .social-icon {
+    color: white;
+}
+
+/* Dark/Light mode adjustment */
+@media (prefers-color-scheme: dark) {
+    .social-links a {
+        background: var(--gray-800);
+        color: var(--gray-400);
+    }
+}
