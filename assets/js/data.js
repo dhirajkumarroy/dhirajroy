@@ -4,7 +4,7 @@ const projectsData = [
         id: 1,
         title: "E-Commerce API Platform",
         description: "Scalable REST API with Spring Boot, JWT authentication, and Redis caching. Handles 10K+ concurrent users.",
-        image: "assets/images/project-api.svg",
+        image: "assets/images/blog.png",
         github: "https://github.com/backenddevpro/ecommerce-api",
         demo: "https://api-demo.backenddevpro.com"
     },
