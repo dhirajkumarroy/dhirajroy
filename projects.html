@@ -1,85 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the portfolio of Dhiraj Roy – backend development, API projects, and automation systems. Filter by tech stack and search.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the portfolio of Dhiraj Roy – backend development, API projects, and automation systems. Filter by tech stack and search."
+    />
     <title>Projects | Dhiraj Roy Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/theme.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/projects-page.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS (cache busted) -->
+    <link rel="stylesheet" href="/assets/css/base.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/theme.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/navbar.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/footer.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/projects-page.css?v=3" />
+  </head>
+  <body>
     <div id="navbar-container"></div>
-    
+
     <main>
-        <!-- Page Hero -->
-        <section class="page-hero">
-            <div class="container">
-                <h1>My Projects</h1>
-                <p>A collection of backend systems and automation solutions I've built</p>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <h1>My Projects</h1>
+          <p>
+            A collection of backend systems and automation solutions I've built
+          </p>
+        </div>
+      </section>
+
+      <!-- Filter & Search Section -->
+      <section class="section filter-section">
+        <div class="container">
+          <div class="filter-wrapper">
+            <div class="search-box">
+              <svg
+                class="search-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search projects by title, description..."
+                class="search-input"
+              />
             </div>
-        </section>
-        
-        <!-- Filter & Search Section -->
-        <section class="section filter-section">
-            <div class="container">
-                <div class="filter-wrapper">
-                    <div class="search-box">
-                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <input type="text" id="searchInput" placeholder="Search projects by title, description..." class="search-input">
-                    </div>
-                    <div class="filter-tags">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="java">Java</button>
-                        <button class="filter-btn" data-filter="spring">Spring Boot</button>
-                        <button class="filter-btn" data-filter="n8n">n8n</button>
-                        <button class="filter-btn" data-filter="node">Node.js</button>
-                        <button class="filter-btn" data-filter="python">Python</button>
-                    </div>
-                </div>
+            <div class="filter-tags">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="java">Java</button>
+              <button class="filter-btn" data-filter="spring">
+                Spring Boot
+              </button>
+              <button class="filter-btn" data-filter="n8n">n8n</button>
+              <button class="filter-btn" data-filter="node">Node.js</button>
+              <button class="filter-btn" data-filter="python">Python</button>
             </div>
-        </section>
-        
-        <!-- All Projects Grid -->
-        <section class="section all-projects">
-            <div class="container">
-                <div id="all-projects-container" class="projects-grid">
-                    <div class="loading-spinner">Loading projects...</div>
-                </div>
-                <div id="no-results" class="no-results" style="display: none;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-linecap="round"/>
-                    </svg>
-                    <h3>No projects found</h3>
-                    <p>Try adjusting your search or filter</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section -->
-        <section class="section cta-section">
-            <div class="container">
-                <div class="cta-wrapper">
-                    <h2>Have a Project in Mind?</h2>
-                    <p>Let's build something great together</p>
-                    <a href="/contact.html" class="btn btn-primary">Hire Me →</a>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Projects Grid -->
+      <section class="section all-projects">
+        <div class="container">
+          <div id="all-projects-container" class="projects-grid">
+            <div class="loading-spinner">Loading projects...</div>
+          </div>
+          <div id="no-results" class="no-results" style="display: none">
+            <svg
+              width="64"
+              height="64"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                stroke="currentColor"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h3>No projects found</h3>
+            <p>Try adjusting your search or filter</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-wrapper">
+            <h2>Have a Project in Mind?</h2>
+            <p>Let's build something great together</p>
+            <a href="/contact.html" class="btn btn-primary">Hire Me →</a>
+          </div>
+        </div>
+      </section>
     </main>
-    
+
     <div id="footer-container"></div>
-    
+
     <script src="assets/js/data.js" defer></script>
     <script src="assets/js/projects-page.js" defer></script>
     <script src="assets/js/main.js" defer></script>
-</body>
+  </body>
 </html>
