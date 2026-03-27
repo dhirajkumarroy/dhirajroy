@@ -1,0 +1,48 @@
+/* Projects Page Styles */
+.page-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+}
+
+.all-projects {
+    padding: 4rem 0;
+}
+
+.section-footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.cta-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-wrapper p {
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-wrapper .btn-primary {
+    background: white;
+    color: var(--primary);
+}

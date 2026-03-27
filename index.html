@@ -1,822 +1,459 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dhiraj Roy - Backend & AI/ML Engineer specializing in Spring Boot, Android, and n8n automation. Building scalable solutions and innovative products.">
-    <meta name="keywords" content="Dhiraj Roy, Backend Developer, AI/ML Engineer, Android Developer, n8n Automation, Spring Boot">
-    <meta name="author" content="Dhiraj Roy">
-    <link rel="canonical" href="https://dhirajroy.com/">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Dhiraj Roy - Backend & AI/ML Engineer">
-    <meta property="og:description" content="Building scalable backend systems, AI solutions, and automation workflows.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dhirajroy.com/">
-    <meta property="og:image" content="/assets/images/og-image.jpg">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dhiraj Roy - Backend & AI/ML Engineer">
-    <meta name="twitter:description" content="Building scalable backend systems, AI solutions, and automation workflows.">
-    
-    <title>Dhiraj Roy - Backend & AI/ML Engineer | Full Stack Developer</title>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Dhiraj Roy - Backend Developer specializing in scalable APIs, automation systems, and system design. View my portfolio, projects, and get in touch."
+    />
+    <meta
+      name="keywords"
+      content="Dhiraj Roy, backend developer, portfolio, API development, n8n automation, system design, Spring Boot"
+    />
+    <meta name="author" content="Dhiraj Roy" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Social Media -->
+    <meta
+      property="og:title"
+      content="Dhiraj Roy | Backend Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Backend developer specializing in scalable APIs, automation systems with n8n, and robust system design. Explore my work and projects."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dhirajroy.com" />
+    <meta
+      property="og:image"
+      content="https://dhirajroy.com/assets/images/og-image.jpg"
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <style>
-        /* Additional Homepage Specific Styles */
-        .featured-projects {
-            padding: var(--spacing-4xl) 0;
-            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .featured-projects::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%);
-            animation: rotate 25s linear infinite reverse;
-        }
-        
-        .text-center {
-            text-align: center;
-            margin-top: var(--spacing-3xl);
-        }
-        
-        /* Floating Animation for Cards */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .skill-card {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .skill-card:nth-child(1) { animation-delay: 0s; }
-        .skill-card:nth-child(2) { animation-delay: 0.5s; }
-        .skill-card:nth-child(3) { animation-delay: 1s; }
-        .skill-card:nth-child(4) { animation-delay: 1.5s; }
-        
-        /* Enhanced Hero Section */
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 2rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: var(--spacing-lg);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-        
-        /* Glow Effect on Buttons */
-        .btn-primary {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            animation: rotate 3s linear infinite;
-        }
-        
-        .btn-primary:hover::after {
-            opacity: 1;
-        }
-        
-        /* Particle Background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .particle {
-            position: absolute;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: floatParticle linear infinite;
-        }
-        
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.1;
-            }
-            90% {
-                opacity: 0.1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Enhanced Project Cards for Homepage */
-        .featured-projects .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .featured-projects .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .featured-projects .project-card:hover::before {
-            left: 100%;
-        }
-        
-        /* Counter Animation */
-        .counter-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Mouse Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            z-index: 10;
-            animation: bounce 2s infinite;
-        }
-        
-        .mouse {
-            width: 30px;
-            height: 50px;
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            position: relative;
-        }
-        
-        .mouse::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 2px;
-            animation: scrollWheel 1.5s infinite;
-        }
-        
-        @keyframes scrollWheel {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-        
-        /* Gradient Text Animation */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .scroll-indicator {
-                display: none;
-            }
-            
-            .skill-card {
-                animation: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar Component -->
-    <div id="navbar"></div>
-    
-    <main>
-        <!-- Hero Section with Particles -->
-        <section class="hero">
-            <div class="particles" id="particles"></div>
-            
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <span class="hero-badge">
-                            <i class="fas fa-code"></i> Welcome to my portfolio
-                        </span>
-                        <h1 class="gradient-text">Hi, I'm <span class="highlight">Dhiraj Roy</span></h1>
-                        <h2>
-                            <span class="typing-text">Backend & AI/ML Engineer</span>
-                        </h2>
-                        <p>Building scalable backend systems, intelligent AI solutions, and automation workflows. Specializing in Spring Boot, AI/ML, Android, and n8n automation.</p>
-                        <div class="hero-buttons">
-                            <a href="/projects" class="btn btn-primary">
-                                <i class="fas fa-arrow-right"></i> View Projects
-                            </a>
-                            <a href="/contact" class="btn btn-outline">
-                                <i class="fas fa-comment"></i> Contact Me
-                            </a>
-                            <a href="/assets/resume.pdf" class="btn btn-outline" download>
-                                <i class="fas fa-download"></i> Resume
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator" id="scrollIndicator">
-                <div class="mouse"></div>
-                <span style="color: var(--gray); font-size: 0.75rem;">Scroll Down</span>
-            </div>
-        </section>
-        
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid-home">
-                    <div class="stat-card-home" data-count="5">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="counter-number" id="years-counter">0</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card-home" data-count="20">
-                        <div class="stat-icon">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <div class="counter-number" id="projects-counter">0</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-card-home" data-count="50">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="counter-number" id="clients-counter">0</div>
-                        <div class="stat-label">Happy Clients</div>
-                    </div>
-                    <div class="stat-card-home" data-count="100">
-                        <div class="stat-icon">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <div class="counter-number" id="downloads-counter">0</div>
-                        <div class="stat-label">App Downloads (K+)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section class="skills-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">My Expertise</span>
-                    <h2 class="section-title">What I Do</h2>
-                    <p class="section-description">Specialized in modern technologies and best practices</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Backend Development</h3>
-                        <ul>
-                            <li>Spring Boot & Microservices</li>
-                            <li>REST APIs & GraphQL</li>
-                            <li>Database Design & Optimization</li>
-                            <li>System Architecture</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>AI/ML Engineering</h3>
-                        <ul>
-                            <li>Machine Learning Models</li>
-                            <li>Computer Vision</li>
-                            <li>Natural Language Processing</li>
-                            <li>Predictive Analytics</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-android"></i>
-                        </div>
-                        <h3>Android Development</h3>
-                        <ul>
-                            <li>Kotlin & Java</li>
-                            <li>Jetpack Compose</li>
-                            <li>Firebase Integration</li>
-                            <li>Play Store Publishing</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>Automation & n8n</h3>
-                        <ul>
-                            <li>Workflow Automation</li>
-                            <li>n8n Custom Nodes</li>
-                            <li>API Integrations</li>
-                            <li>Process Optimization</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Featured Projects -->
-        <section class="featured-projects">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Recent Work</span>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-description">Some of my best work that showcases my skills</p>
-                </div>
-                <div class="projects-grid" id="featured-projects">
-                    <!-- Projects will be loaded via JavaScript -->
-                </div>
-                <div class="text-center">
-                    <a href="/projects" class="btn btn-outline">
-                        View All Projects <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials Section -->
-        <section class="testimonials-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Testimonials</span>
-                    <h2 class="section-title">What Clients Say</h2>
-                    <p class="section-description">Feedback from people I've worked with</p>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>Dhiraj delivered exceptional backend solutions for our microservices architecture. His expertise in Spring Boot and system design was invaluable.</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>John Smith</strong>
-                                <span>CTO, TechCorp</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>Working with Dhiraj on our ML project was a great experience. He built a fraud detection system with 99% accuracy that saved us millions.</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>Sarah Johnson</strong>
-                                <span>Data Science Lead, FinTech Inc</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>The Android app Dhiraj built for us exceeded all expectations. Clean architecture, smooth performance, and great user experience.</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>Mike Chen</strong>
-                                <span>Product Manager, MobileApp</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section -->
-        <section class="cta-section-home">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Build Something Amazing?</h2>
-                    <p>Let's collaborate and bring your ideas to life. I'm always open to discussing new projects and opportunities.</p>
-                    <div class="cta-buttons">
-                        <a href="/contact" class="btn btn-primary">Start a Project</a>
-                        <a href="/about" class="btn btn-outline">Learn More About Me</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Footer Component -->
-    <div id="footer"></div>
-    
-    <!-- JavaScript -->
-    <script src="/assets/js/main.js"></script>
-    <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            if (!particlesContainer) return;
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                const size = Math.random() * 5 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Counter animation
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 50;
-            const updateCounter = () => {
-                if (current < target) {
-                    current += increment;
-                    element.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            };
-            updateCounter();
-        }
-        
-        // Intersection Observer for counters
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const count = parseInt(target.getAttribute('data-count')) || 0;
-                    animateCounter(target, count);
-                    counterObserver.unobserve(target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        // Load components and initialize
-        document.addEventListener("DOMContentLoaded", () => {
-            loadComponent("navbar", "navbar");
-            loadComponent("footer", "footer");
-            
-            // Create particles
-            createParticles();
-            
-            // Scroll indicator click
-            const scrollIndicator = document.getElementById('scrollIndicator');
-            if (scrollIndicator) {
-                scrollIndicator.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: window.innerHeight,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-            
-            // Load featured projects
-            if (typeof SITE_CONFIG !== "undefined") {
-                const featuredProjects = SITE_CONFIG.projects.slice(0, 3);
-                const projectsGrid = document.getElementById("featured-projects");
-                if (projectsGrid) {
-                    projectsGrid.innerHTML = featuredProjects
-                        .map(
-                            (project) => `
-                            <div class="project-card">
-                                <div class="project-icon-header" style="background: linear-gradient(135deg, ${getCategoryColor(project.category)}, ${getCategoryColor(project.category)}cc);">
-                                    <div class="project-icon">
-                                        <i class="fas ${getCategoryIcon(project.category)}"></i>
-                                    </div>
-                                </div>
-                                <div class="project-content">
-                                    <h3>${escapeHtml(project.title)}</h3>
-                                    <p>${escapeHtml(project.description)}</p>
-                                    <div class="project-tech">
-                                        ${project.tech.map((tech) => `<span class="tech-tag">${escapeHtml(tech)}</span>`).join("")}
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="${project.github}" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub →</a>
-                                        ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo →</a>` : ''}
-                                    </div>
-                                </div>
-                            </div>
-                        `,
-                        )
-                        .join("");
-                }
-            }
-            
-            // Observe counter elements
-            const counters = document.querySelectorAll('.counter-number');
-            counters.forEach(counter => {
-                const parent = counter.closest('.stat-card-home');
-                if (parent) {
-                    const count = parent.getAttribute('data-count');
-                    counter.setAttribute('data-count', count);
-                    counterObserver.observe(parent);
-                }
-            });
-        });
-        
-        // Helper functions
-        function getCategoryIcon(category) {
-            const icons = {
-                'backend': 'fa-server',
-                'ai_ml': 'fa-brain',
-                'android': 'fa-android',
-                'automation': 'fa-robot'
-            };
-            return icons[category] || 'fa-code';
-        }
-        
-        function getCategoryColor(category) {
-            const colors = {
-                'backend': '#3b82f6',
-                'ai_ml': '#8b5cf6',
-                'android': '#10b981',
-                'automation': '#f59e0b'
-            };
-            return colors[category] || '#6b7280';
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E"
+    />
+
+    <title>Dhiraj Roy | Backend Developer Portfolio</title>
+
+    <!-- Preload critical assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/hero.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dhiraj Roy",
+        "jobTitle": "Backend Developer",
+        "description": "Specialized in scalable backend APIs, automation systems with n8n, and robust system design.",
+        "url": "https://dhirajroy.com",
+        "sameAs": [
+          "https://github.com/dhirajroy",
+          "https://linkedin.com/in/dhirajroy",
+          "https://twitter.com/dhirajroy"
+        ]
+      }
     </script>
-    
-    <style>
-        /* Additional Styles for New Sections */
-        .stats-section {
-            padding: var(--spacing-3xl) 0;
-            background: var(--white);
-        }
-        
-        .stats-grid-home {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-2xl);
-        }
-        
-        .stat-card-home {
-            text-align: center;
-            padding: var(--spacing-xl);
-            background: var(--white);
-            border-radius: 1rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .stat-card-home:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-lg);
-        }
-        
-        .stat-icon i {
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--spacing-3xl);
-        }
-        
-        .section-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 2rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .skill-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-lg);
-        }
-        
-        .skill-icon i {
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .testimonials-section {
-            padding: var(--spacing-4xl) 0;
-            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--spacing-2xl);
-            margin-top: var(--spacing-2xl);
-        }
-        
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 1rem;
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .testimonial-content i {
-            font-size: 2rem;
-            color: var(--primary);
-            opacity: 0.3;
-            margin-bottom: var(--spacing-md);
-            display: block;
-        }
-        
-        .testimonial-content p {
-            color: var(--gray);
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            padding-top: var(--spacing-md);
-            border-top: 1px solid var(--gray-light);
-        }
-        
-        .author-info strong {
-            display: block;
-            color: var(--dark);
-        }
-        
-        .author-info span {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-        
-        .cta-section-home {
-            padding: var(--spacing-4xl) 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .cta-content h2 {
-            color: var(--white);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .cta-content h2::after {
-            background: var(--white);
-        }
-        
-        .cta-content p {
-            margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: var(--spacing-lg);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .cta-buttons .btn-outline {
-            border-color: var(--white);
-            color: var(--white);
-        }
-        
-        .cta-buttons .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-        
-        @media (max-width: 768px) {
-            .stats-grid-home {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--spacing-md);
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-buttons .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-    </style>
-</body>
+  </head>
+  <body>
+    <div id="navbar-container"></div>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="badge-icon">✨</span>
+              Hi, I'm Dhiraj Roy
+              <span class="badge-wave">👋</span>
+            </div>
+            <h1 class="hero-title">
+              Backend Developer &
+              <span class="gradient-text">Automation Expert</span>
+            </h1>
+            <p class="hero-subtext">
+              Building scalable APIs, intelligent automation workflows, and
+              robust system architectures that power modern businesses.
+            </p>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="hero-stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projects Delivered</span>
+              </div>
+              <div class="hero-stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Client Satisfaction</span>
+              </div>
+            </div>
+            <div class="hero-buttons">
+              <a href="/projects.html" class="btn btn-primary">
+                <span>View My Work</span>
+                <svg
+                  class="btn-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://wa.me/91XXXXXXXXXX?text=Hi%20Dhiraj,%20I'm%20interested%20in%20your%20backend%20development%20services!"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+              >
+                <svg
+                  class="btn-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 11.5C21 16.1944 17.1944 20 12.5 20C10.773 20 9.15087 19.5419 7.74534 18.7306L3 20L4.26938 15.2547C3.45807 13.8491 3 12.227 3 10.5C3 5.80558 6.80558 2 11.5 2C16.1944 2 21 5.80558 21 11.5Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 11H8.01M12 11H12.01M16 11H16.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span>Hire Me on WhatsApp</span>
+              </a>
+            </div>
+            <div class="hero-tech-stack">
+              <span class="tech-label">Tech Stack:</span>
+              <div class="tech-icons">
+                <span class="tech-icon">Java</span>
+                <span class="tech-icon">Spring Boot</span>
+                <span class="tech-icon">n8n</span>
+                <span class="tech-icon">Node.js</span>
+                <span class="tech-icon">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-image-wrapper">
+              <img
+                src="assets/images/dhiraj-avatar.svg"
+                alt="Dhiraj Roy - Backend Developer"
+                class="hero-image"
+                width="450"
+                height="450"
+                loading="eager"
+              />
+              <div class="hero-decoration">
+                <div class="decoration-circle"></div>
+                <div class="decoration-dots"></div>
+              </div>
+            </div>
+            <div class="hero-floating-card floating-card-1">
+              <div class="floating-icon">⚙️</div>
+              <div class="floating-text">API Development</div>
+            </div>
+            <div class="hero-floating-card floating-card-2">
+              <div class="floating-icon">🤖</div>
+              <div class="floating-text">n8n Automation</div>
+            </div>
+            <div class="hero-floating-card floating-card-3">
+              <div class="floating-icon">🏛️</div>
+              <div class="floating-text">System Design</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section (Preview) -->
+      <section class="section about" id="about">
+        <div class="container">
+          <div class="about-wrapper">
+            <div class="about-image">
+              <img
+                src="assets/images/about-illustration.svg"
+                alt="About Dhiraj Roy"
+                loading="lazy"
+              />
+            </div>
+            <div class="about-content">
+              <h2>About Me</h2>
+              <p>
+                I'm a backend developer with 5+ years of experience building
+                scalable, high-performance systems for startups and enterprises.
+                My passion lies in creating clean, maintainable code that solves
+                real business problems.
+              </p>
+              <p>
+                I specialize in Java, Spring Boot, and n8n automation, helping
+                businesses streamline their operations through intelligent
+                workflows and robust API architectures.
+              </p>
+              <div class="about-stats">
+                <div class="stat">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">20+</span>
+                  <span class="stat-label">Happy Clients</span>
+                </div>
+              </div>
+              <a href="/about.html" class="btn btn-outline"
+                >Read Full Story →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section (Links to ScaleForgeHQ) -->
+      <section class="section services-preview" id="services">
+        <div class="container">
+          <div class="section-header">
+            <h2>What I Do</h2>
+            <p>Specialized backend solutions for modern businesses</p>
+          </div>
+          <div class="services-grid">
+            <div
+              class="service-card"
+              onclick="
+                window.open(
+                  'https://scaleforgehq.com/backend-api-development',
+                  '_blank',
+                )
+              "
+            >
+              <div class="service-icon">⚙️</div>
+              <h3>Backend API Development</h3>
+              <p>
+                RESTful & GraphQL APIs with Spring Boot, Node.js,
+                authentication, and high performance.
+              </p>
+              <span class="service-link">Learn more →</span>
+            </div>
+            <div
+              class="service-card"
+              onclick="
+                window.open(
+                  'https://scaleforgehq.com/automation-systems',
+                  '_blank',
+                )
+              "
+            >
+              <div class="service-icon">🤖</div>
+              <h3>Automation Systems (n8n)</h3>
+              <p>
+                Custom n8n workflows, third-party integrations, data sync, and
+                process automation.
+              </p>
+              <span class="service-link">Learn more →</span>
+            </div>
+            <div
+              class="service-card"
+              onclick="
+                window.open('https://scaleforgehq.com/system-design', '_blank')
+              "
+            >
+              <div class="service-icon">🏛️</div>
+              <h3>System Design & Architecture</h3>
+              <p>
+                Scalable architecture, microservices, database design, caching,
+                and cloud deployment.
+              </p>
+              <span class="service-link">Learn more →</span>
+            </div>
+          </div>
+          <div class="services-cta">
+            <a
+              href="https://scaleforgehq.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+              >Explore All Services →</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section (Preview) -->
+      <section class="section projects" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>Real-world solutions I've built for clients</p>
+          </div>
+          <div id="projects-container" class="projects-grid">
+            <div class="loading-spinner">Loading projects...</div>
+          </div>
+          <div class="section-footer">
+            <a href="/projects.html" class="btn btn-outline"
+              >View All Projects →</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Preview Section -->
+      <section class="section blog-preview">
+        <div class="container">
+          <div class="blog-preview-wrapper">
+            <div class="blog-preview-content">
+              <h2>Latest from My Blog</h2>
+              <p>
+                Sharing insights on backend development, automation, and system
+                design
+              </p>
+              <a
+                href="https://blog.dhirajroy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                >Read My Blog →</a
+              >
+            </div>
+            <div class="blog-preview-image">
+              <img
+                src="assets/images/blog-illustration.svg"
+                alt="Blog"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section (Preview) -->
+      <section class="section contact" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2>Let's Connect</h2>
+            <p>Have a project in mind? Let's discuss how I can help.</p>
+          </div>
+          <div class="contact-wrapper">
+            <div class="contact-info">
+              <div class="contact-detail">
+                <span class="contact-icon">📧</span>
+                <div>
+                  <h4>Email</h4>
+                  <a href="mailto:dhiraj@dhirajroy.com">dhiraj@dhirajroy.com</a>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-icon">💬</span>
+                <div>
+                  <h4>WhatsApp</h4>
+                  <a
+                    href="https://wa.me/919876543210?text=Hi%20Dhiraj,%20I'm%20interested%20in%20your%20backend%20services!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >+91 98765 43210</a
+                  >
+                </div>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-icon">🌐</span>
+                <div>
+                  <h4>Social</h4>
+                  <div class="social-links">
+                    <a href="https://github.com/dhirajroy" target="_blank"
+                      >GitHub</a
+                    >
+                    <a href="https://linkedin.com/in/dhirajroy" target="_blank"
+                      >LinkedIn</a
+                    >
+                    <a href="https://twitter.com/dhirajroy" target="_blank"
+                      >Twitter</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Your name" required />
+                <small class="error-message" id="name-error"></small>
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Email address"
+                  required
+                />
+                <small class="error-message" id="email-error"></small>
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Tell me about your project..."
+                  required
+                ></textarea>
+                <small class="error-message" id="message-error"></small>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+              <div id="form-feedback" class="form-feedback"></div>
+            </form>
+          </div>
+          <div class="section-footer">
+            <a href="/contact.html" class="btn btn-outline"
+              >Open Full Contact Page →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>

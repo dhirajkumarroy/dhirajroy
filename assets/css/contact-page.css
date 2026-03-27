@@ -1,0 +1,148 @@
+/* Contact Page Styles */
+.page-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.contact-options {
+    padding: 4rem 0;
+}
+
+.contact-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.contact-option-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--gray-100);
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-option-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-option-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-option-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-option-card p {
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+
+.contact-form-section {
+    padding: 4rem 0;
+    background: var(--gray-100);
+}
+
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.form-wrapper h2 {
+    margin-bottom: 0.5rem;
+}
+
+.form-wrapper > p {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: auto;
+}
+
+.faq {
+    padding: 4rem 0;
+}
+
+.faq h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.faq-item {
+    padding: 1.5rem;
+    background: var(--gray-100);
+    border-radius: 1rem;
+}
+
+.faq-item h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.faq-item p {
+    color: var(--gray-600);
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}

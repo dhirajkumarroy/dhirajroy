@@ -3,726 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about Dhiraj Roy - Backend Developer, AI/ML Engineer, and automation expert with 5+ years of experience building scalable systems.">
-    <meta name="keywords" content="Dhiraj Roy, Backend Developer, AI/ML Engineer, Android Developer, Spring Boot, Python, TensorFlow">
-    <meta name="author" content="Dhiraj Roy">
-    <link rel="canonical" href="https://dhirajroy.com/about">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="About Dhiraj Roy - Backend & AI/ML Engineer">
-    <meta property="og:description" content="Software engineer with 5+ years experience in backend systems, AI/ML, and automation.">
-    <meta property="og:type" content="profile">
-    <meta property="og:url" content="https://dhirajroy.com/about">
-    
-    <title>About Dhiraj Roy - Backend & AI/ML Engineer</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="/assets/css/main.css">
-    
-    <style>
-        /* Additional About Page Specific Styles */
-        .about-section {
-            padding: var(--spacing-4xl) 0;
-            background: linear-gradient(135deg, var(--white) 0%, var(--light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(59,130,246,0.03) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-        
-        .about-header {
-            text-align: center;
-            margin-bottom: var(--spacing-3xl);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: var(--spacing-md);
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .about-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 2rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-lg);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-        
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Journey Timeline */
-        .journey-section {
-            background: var(--white);
-            border-radius: 1rem;
-            padding: var(--spacing-2xl);
-            margin-bottom: var(--spacing-2xl);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .journey-section:hover {
-            box-shadow: var(--shadow-xl);
-            transform: translateY(-4px);
-        }
-        
-        .section-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .section-icon i {
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .journey-timeline {
-            position: relative;
-            padding-left: var(--spacing-2xl);
-        }
-        
-        .journey-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: var(--spacing-2xl);
-            padding-left: var(--spacing-xl);
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 18px;
-            height: 18px;
-            background: var(--primary);
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .timeline-year {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .timeline-title {
-            font-size: 1.25rem;
-            margin-bottom: var(--spacing-xs);
-            color: var(--dark);
-        }
-        
-        .timeline-subtitle {
-            color: var(--gray);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        /* Enhanced Tech Stack */
-        .tech-stack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-            margin: var(--spacing-xl) 0;
-        }
-        
-        .tech-category {
-            background: var(--white);
-            border-radius: 1rem;
-            padding: var(--spacing-xl);
-            transition: var(--transition);
-            border: 1px solid var(--gray-light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tech-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .tech-category:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .tech-category:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .tech-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-lg);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            color: var(--primary);
-        }
-        
-        .tech-category h3 i {
-            font-size: 1.75rem;
-        }
-        
-        .tech-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-        }
-        
-        .tech-items span {
-            background: linear-gradient(135deg, var(--light), var(--white));
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--dark);
-            border: 1px solid var(--gray-light);
-            transition: var(--transition-fast);
-            cursor: pointer;
-        }
-        
-        .tech-items span:hover {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            transform: translateY(-2px);
-            border-color: transparent;
-        }
-        
-        /* Experience Timeline Enhanced */
-        .experience-timeline {
-            position: relative;
-            margin: var(--spacing-xl) 0;
-        }
-        
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
-        }
-        
-        .experience-item {
-            position: relative;
-            margin-bottom: var(--spacing-2xl);
-            padding-left: var(--spacing-2xl);
-            background: var(--white);
-            border-radius: 1rem;
-            padding: var(--spacing-xl);
-            padding-left: var(--spacing-2xl);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 30px;
-            width: 18px;
-            height: 18px;
-            background: var(--primary);
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .experience-item:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .experience-item:hover::before {
-            transform: scale(1.2);
-            background: var(--secondary);
-        }
-        
-        .experience-item h3 {
-            font-size: 1.25rem;
-            margin-bottom: var(--spacing-sm);
-            color: var(--dark);
-        }
-        
-        .period {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            padding: 0.25rem 0.75rem;
-            background: var(--light);
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .period i {
-            font-size: 0.75rem;
-        }
-        
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-xl);
-            margin: var(--spacing-2xl) 0;
-        }
-        
-        .stat-card {
-            background: var(--white);
-            border-radius: 1rem;
-            padding: var(--spacing-xl);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--gray-light);
-            cursor: pointer;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: transparent;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .stat-label {
-            color: var(--gray);
-            font-weight: 500;
-        }
-        
-        /* Skills Progress Bars */
-        .skills-progress {
-            margin: var(--spacing-2xl) 0;
-        }
-        
-        .skill-progress-item {
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--spacing-sm);
-            font-weight: 500;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background: var(--gray-light);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-            width: 0;
-            transition: width 1.5s ease;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            margin-top: var(--spacing-3xl);
-            padding: var(--spacing-2xl);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 1rem;
-            color: white;
-        }
-        
-        .cta-section h3 {
-            font-size: 1.75rem;
-            margin-bottom: var(--spacing-md);
-            color: white;
-        }
-        
-        .cta-section p {
-            margin-bottom: var(--spacing-lg);
-            opacity: 0.9;
-        }
-        
-        .cta-section .btn {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .cta-section .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            background: white;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .about-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .journey-section,
-            .experience-item {
-                padding: var(--spacing-lg);
-            }
-            
-            .tech-stack-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .experience-item {
-                padding-left: var(--spacing-lg);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta name="description" content="Learn more about Dhiraj Roy - Backend Developer with 5+ years experience in building scalable APIs and automation systems.">
+    <title>About Dhiraj Roy | Backend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/about-page.css">
 </head>
 <body>
-    <div id="navbar"></div>
+    <div id="navbar-container"></div>
     
     <main>
-        <section class="about-section">
+        <!-- Page Hero -->
+        <section class="page-hero">
             <div class="container">
-                <div class="about-header">
-                    <span class="about-badge">
-                        <i class="fas fa-user-astronaut"></i> About Me
-                    </span>
-                    <h1>Know Who I Am</h1>
-                    <p class="section-description">Passionate developer dedicated to building innovative solutions that make a difference</p>
-                </div>
-                
-                <div class="about-content">
-                    <!-- Journey Section with Timeline -->
-                    <div class="journey-section fade-in-up">
-                        <div class="section-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
+                <h1>About Me</h1>
+                <p>Backend Developer & Automation Expert</p>
+            </div>
+        </section>
+        
+        <!-- Full Bio -->
+        <section class="section full-bio">
+            <div class="container">
+                <div class="bio-grid">
+                    <div class="bio-content">
                         <h2>My Journey</h2>
-                        <div class="journey-timeline">
-                            <div class="timeline-item">
-                                <span class="timeline-year">2022 - Present</span>
-                                <h3 class="timeline-title">Senior Backend Engineer</h3>
-                                <p class="timeline-subtitle">Leading scalable system architecture and microservices</p>
-                                <p>Designing and implementing high-performance backend systems handling millions of requests daily. Mentoring junior developers and driving technical decisions.</p>
+                        <p>I started my coding journey 5+ years ago, fascinated by how systems work behind the scenes. What began as curiosity quickly became a passion for building robust, scalable backend infrastructure that powers real-world applications.</p>
+                        <p>Over the years, I've worked with startups and enterprises across 12 countries, helping them scale from zero to millions of users. My expertise spans across the entire backend spectrum - from designing database schemas to implementing complex microservices architectures.</p>
+                        <p>I believe that great backend systems are invisible to users - they just work. Fast, reliable, and scalable. That's what I deliver.</p>
+                        
+                        <h2>My Philosophy</h2>
+                        <p>Code is not just about functionality; it's about maintainability, scalability, and performance. I write code that not only solves today's problems but is also ready for tomorrow's growth. Clean architecture, thorough testing, and documentation are not optional - they're essential.</p>
+                        
+                        <h2>Beyond Code</h2>
+                        <p>When I'm not coding, I share my knowledge through my blog at <a href="https://blog.dhirajroy.com" target="_blank">blog.dhirajroy.com</a>. I write about backend development, automation, system design, and the latest in tech. I also enjoy mentoring junior developers and contributing to open-source projects.</p>
+                    </div>
+                    <div class="bio-sidebar">
+                        <div class="info-card">
+                            <h3>Quick Info</h3>
+                            <ul>
+                                <li><strong>📍 Location:</strong> Remote / India</li>
+                                <li><strong>💼 Experience:</strong> 5+ Years</li>
+                                <li><strong>🎯 Specialization:</strong> Backend, APIs, Automation</li>
+                                <li><strong>📧 Email:</strong> dhiraj@dhirajroy.com</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3>Core Skills</h3>
+                            <div class="skill-tags">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>Node.js</span>
+                                <span>Python</span>
+                                <span>n8n</span>
+                                <span>PostgreSQL</span>
+                                <span>MongoDB</span>
+                                <span>Redis</span>
+                                <span>AWS</span>
+                                <span>Docker</span>
+                                <span>Kubernetes</span>
                             </div>
-                            <div class="timeline-item">
-                                <span class="timeline-year">2020 - 2022</span>
-                                <h3 class="timeline-title">AI/ML Engineer</h3>
-                                <p class="timeline-subtitle">Building intelligent systems and computer vision solutions</p>
-                                <p>Developed ML models achieving 99.2% accuracy in fraud detection. Implemented real-time inference pipelines and optimized model performance.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <span class="timeline-year">2018 - 2020</span>
-                                <h3 class="timeline-title">Android Developer</h3>
-                                <p class="timeline-subtitle">Creating impactful mobile experiences</p>
-                                <p>Published 5+ Android apps with 100K+ downloads. Implemented MVVM architecture and modern Android development practices.</p>
-                            </div>
+                        </div>
+                        <div class="info-card">
+                            <h3>Services</h3>
+                            <ul>
+                                <li>🚀 Backend API Development</li>
+                                <li>🤖 n8n Automation Workflows</li>
+                                <li>🏛️ System Design & Architecture</li>
+                                <li>☁️ Cloud Deployment</li>
+                            </ul>
+                            <a href="https://scaleforgehq.com" target="_blank" class="btn btn-secondary">Learn More →</a>
                         </div>
                     </div>
-                    
-                    <!-- Stats Section -->
-                    <div class="stats-grid">
-                        <div class="stat-card" data-count="5">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat-card" data-count="20">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-card" data-count="50">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                        <div class="stat-card" data-count="100">
-                            <span class="stat-number">100K+</span>
-                            <span class="stat-label">App Downloads</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Timeline -->
+        <section class="section experience">
+            <div class="container">
+                <h2>Experience & Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Senior Backend Developer</h3>
+                            <p>Leading backend architecture for high-scale applications, mentoring junior developers, and implementing automation workflows.</p>
                         </div>
                     </div>
-                    
-                    <!-- What I Do -->
-                    <div class="journey-section fade-in-up">
-                        <div class="section-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h2>What I Do</h2>
-                        <div class="skills-progress">
-                            <div class="skill-progress-item">
-                                <div class="skill-info">
-                                    <span>Backend Development</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-info">
-                                    <span>AI/ML Engineering</span>
-                                    <span>88%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-info">
-                                    <span>Android Development</span>
-                                    <span>85%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-info">
-                                    <span>Automation & n8n</span>
-                                    <span>90%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 90%"></div>
-                                </div>
-                            </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020 - 2023</div>
+                        <div class="timeline-content">
+                            <h3>Backend Developer</h3>
+                            <p>Built RESTful APIs and microservices for fintech and e-commerce platforms. Implemented caching strategies and database optimizations.</p>
                         </div>
                     </div>
-                    
-                    <!-- Tech Stack Section -->
-                    <div class="journey-section fade-in-up">
-                        <div class="section-icon">
-                            <i class="fas fa-cubes"></i>
-                        </div>
-                        <h2>Tech Stack</h2>
-                        <div class="tech-stack-grid">
-                            <div class="tech-category">
-                                <h3><i class="fas fa-server"></i> Backend</h3>
-                                <div class="tech-items">
-                                    <span>Java</span><span>Spring Boot</span><span>Python</span>
-                                    <span>Node.js</span><span>Go</span><span>PostgreSQL</span>
-                                    <span>MongoDB</span><span>Redis</span><span>Kafka</span>
-                                </div>
-                            </div>
-                            <div class="tech-category">
-                                <h3><i class="fas fa-brain"></i> AI/ML</h3>
-                                <div class="tech-items">
-                                    <span>TensorFlow</span><span>PyTorch</span><span>Scikit-learn</span>
-                                    <span>OpenCV</span><span>Hugging Face</span><span>LangChain</span>
-                                    <span>FastAI</span><span>Pandas</span>
-                                </div>
-                            </div>
-                            <div class="tech-category">
-                                <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
-                                <div class="tech-items">
-                                    <span>Docker</span><span>Kubernetes</span><span>AWS</span>
-                                    <span>GCP</span><span>GitHub Actions</span><span>Terraform</span>
-                                    <span>Jenkins</span><span>Prometheus</span>
-                                </div>
-                            </div>
-                            <div class="tech-category">
-                                <h3><i class="fas fa-mobile-alt"></i> Mobile</h3>
-                                <div class="tech-items">
-                                    <span>Kotlin</span><span>Jetpack Compose</span><span>Java</span>
-                                    <span>Firebase</span><span>Room DB</span><span>Retrofit</span>
-                                </div>
-                            </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019 - 2020</div>
+                        <div class="timeline-content">
+                            <h3>Associate Software Engineer</h3>
+                            <p>Started career building backend systems for startups. Gained expertise in Java, Spring Boot, and database design.</p>
                         </div>
                     </div>
-                    
-                    <!-- Experience Timeline -->
-                    <div class="journey-section fade-in-up">
-                        <div class="section-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h2>Work Experience</h2>
-                        <div class="experience-timeline">
-                            <div class="experience-item">
-                                <h3>Senior Backend Developer - Tech Solutions Inc.</h3>
-                                <p class="period"><i class="far fa-calendar-alt"></i> 2022 - Present</p>
-                                <p>Leading backend development for microservices architecture handling 1M+ requests/day. Implemented caching strategies, optimized database queries, and reduced response time by 40%.</p>
-                                <div class="tech-items" style="margin-top: var(--spacing-md);">
-                                    <span>Spring Boot</span><span>Kafka</span><span>Redis</span><span>PostgreSQL</span>
-                                </div>
-                            </div>
-                            <div class="experience-item">
-                                <h3>ML Engineer - AI Innovations Lab</h3>
-                                <p class="period"><i class="far fa-calendar-alt"></i> 2020 - 2022</p>
-                                <p>Developed computer vision models for industrial quality control achieving 99.5% accuracy. Implemented real-time inference pipeline using TensorFlow Serving and optimized model deployment.</p>
-                                <div class="tech-items" style="margin-top: var(--spacing-md);">
-                                    <span>TensorFlow</span><span>PyTorch</span><span>OpenCV</span><span>FastAPI</span>
-                                </div>
-                            </div>
-                            <div class="experience-item">
-                                <h3>Android Developer - Mobile Apps Studio</h3>
-                                <p class="period"><i class="far fa-calendar-alt"></i> 2018 - 2020</p>
-                                <p>Built and published 5+ Android apps with 100K+ total downloads. Implemented MVVM architecture, Room database, Firebase services, and material design principles.</p>
-                                <div class="tech-items" style="margin-top: var(--spacing-md);">
-                                    <span>Kotlin</span><span>Jetpack Compose</span><span>Firebase</span><span>Room DB</span>
-                                </div>
-                            </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Education</div>
+                        <div class="timeline-content">
+                            <h3>B.Tech in Computer Science</h3>
+                            <p>Specialized in Software Engineering and Distributed Systems. Graduated with honors.</p>
                         </div>
                     </div>
-                    
-                    <!-- Call to Action -->
-                    <div class="cta-section fade-in-up">
-                        <h3>Ready to Work Together?</h3>
-                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                        <a href="/contact" class="btn btn-primary">Get In Touch <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-wrapper">
+                    <h2>Ready to Work Together?</h2>
+                    <p>Let's discuss your project and how I can help</p>
+                    <a href="/contact.html" class="btn btn-primary">Get In Touch →</a>
                 </div>
             </div>
         </section>
     </main>
     
-    <div id="footer"></div>
+    <div id="footer-container"></div>
     
-    <script src="/assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            loadComponent('navbar', 'navbar');
-            loadComponent('footer', 'footer');
-            
-            // Animate skill bars on scroll
-            const animateSkills = () => {
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
-            };
-            
-            // Animate stats on scroll
-            const animateStats = () => {
-                const statNumbers = document.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    const text = stat.textContent;
-                    const number = parseInt(text);
-                    if (!isNaN(number)) {
-                        let current = 0;
-                        const increment = number / 50;
-                        const updateNumber = () => {
-                            if (current < number) {
-                                current += increment;
-                                stat.textContent = Math.ceil(current) + '+';
-                                requestAnimationFrame(updateNumber);
-                            } else {
-                                stat.textContent = number + '+';
-                            }
-                        };
-                        updateNumber();
-                    }
-                });
-            };
-            
-            // Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('progress-fill')) {
-                            animateSkills();
-                        }
-                        if (entry.target.classList.contains('stat-card')) {
-                            animateStats();
-                        }
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            // Observe elements
-            document.querySelectorAll('.progress-fill, .stat-card').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Add hover effect for experience items
-            const experienceItems = document.querySelectorAll('.experience-item');
-            experienceItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('expanded');
-                });
-            });
-        });
-    </script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
