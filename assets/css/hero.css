@@ -67,7 +67,7 @@
 }
 
 /* Fixed gradient text – bright and animated */
-.gradient-text{
+/* .gradient-text{
     background: linear-gradient(135deg, #ff6b6b, #f06595, #5f27cd);
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -76,7 +76,7 @@
     font-weight: 800;
     display: inline-block;
     animation: gradientShift 3s ease infinite;
-}
+} */
 
 
 @keyframes gradientShift {
