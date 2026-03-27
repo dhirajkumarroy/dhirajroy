@@ -29,6 +29,83 @@
     opacity: 0.95;
 }
 
+/* About Section on Homepage */
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transition: var(--transition);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #667eea);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover::before {
+    opacity: 1;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Alternative simple style (if you don't want the rotating border) */
+.about-image-simple img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+.about-image-simple img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
 /* Mission & Vision */
 .mission-vision {
     background: var(--gray-100);
@@ -249,6 +326,10 @@
     .stat-number {
         font-size: 2rem;
     }
+    
+    .image-wrapper {
+        max-width: 280px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -271,5 +352,9 @@
     
     .cta-wrapper h2 {
         font-size: 1.75rem;
+    }
+    
+    .image-wrapper {
+        max-width: 240px;
     }
 }
