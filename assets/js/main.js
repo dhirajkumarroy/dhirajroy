@@ -22,7 +22,6 @@ function initNavbar() {
         });
     }
     
-    // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
@@ -33,7 +32,6 @@ function initNavbar() {
             navLinks.classList.toggle('active');
         });
         
-        // Close mobile menu when clicking a link
         const links = navLinks.querySelectorAll('.nav-link');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -70,35 +68,22 @@ function setActiveNavLink() {
         link.classList.remove('active');
         const href = link.getAttribute('href');
         
-        // Skip external links
-        if (link.getAttribute('target') === '_blank') {
-            return;
-        }
+        if (link.getAttribute('target') === '_blank') return;
         
-        // Handle Home link with hash
         if (href === '/index.html#home' && currentPath === 'index.html') {
             link.classList.add('active');
-        }
-        // Handle About page
-        else if (href === '/about.html' && currentPath === 'about.html') {
+        } else if (href === '/about.html' && currentPath === 'about.html') {
             link.classList.add('active');
-        }
-        // Handle Projects page
-        else if (href === '/projects.html' && currentPath === 'projects.html') {
+        } else if (href === '/projects.html' && currentPath === 'projects.html') {
             link.classList.add('active');
-        }
-        // Handle Contact page
-        else if (href === '/contact.html' && currentPath === 'contact.html') {
+        } else if (href === '/contact.html' && currentPath === 'contact.html') {
             link.classList.add('active');
         }
     });
     
-    // Also handle hash-based navigation for Home sections
     if (currentPath === 'index.html' && currentHash) {
         const homeLink = document.querySelector('a[href="/index.html#home"]');
-        if (homeLink) {
-            homeLink.classList.add('active');
-        }
+        if (homeLink) homeLink.classList.add('active');
     }
 }
 
@@ -110,7 +95,7 @@ function loadProjects() {
     
     setTimeout(() => {
         if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
-            renderProjects(projectsData.slice(0, 3)); // Show only 3 on homepage
+            renderProjects(projectsData.slice(0, 3));
         } else {
             projectsContainer.innerHTML = '<div class="loading-spinner">No projects available</div>';
         }
@@ -123,11 +108,7 @@ function renderProjects(projects) {
     
     projectsContainer.innerHTML = projects.map(project => `
         <div class="project-card">
-            <img src="${project.image}" 
-                 alt="${project.title}" 
-                 class="project-image" 
-                 loading="lazy" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23667eea\'/%3E%3Ctext x=\'50%%\' y=\'50%%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'16\' font-family=\'Inter\'%3E${escapeHtml(project.title)}%3C/text%3E%3C/svg%3E'">
+            <div class="project-icon">📁</div>
             <div class="project-content">
                 <h3 class="project-title">${escapeHtml(project.title)}</h3>
                 <p class="project-description">${escapeHtml(project.description)}</p>
@@ -214,7 +195,6 @@ function isValidEmail(email) {
 }
 
 function initSmoothScroll() {
-    // Only apply smooth scroll for anchor links on the same page
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
