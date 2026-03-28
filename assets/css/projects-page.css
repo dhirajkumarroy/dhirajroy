@@ -277,3 +277,123 @@
         font-size: 0.75rem;
     }
 }
+
+/* Filter controls layout */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.sort-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    background: white;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sort-select:hover {
+    border-color: var(--primary);
+}
+
+.clear-filters {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.clear-filters:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.results-info {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: 1rem;
+}
+
+/* Skeleton loading */
+.project-card.skeleton {
+    pointer-events: none;
+    background: var(--white);
+}
+
+.skeleton-icon {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 1.5rem auto 0;
+}
+
+.skeleton-title,
+.skeleton-description,
+.skeleton-tags,
+.skeleton-links {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.skeleton-title {
+    height: 1.25rem;
+    width: 70%;
+}
+
+.skeleton-description {
+    height: 3rem;
+    width: 100%;
+}
+
+.skeleton-tags {
+    height: 1.75rem;
+    width: 60%;
+}
+
+.skeleton-links {
+    height: 1.5rem;
+    width: 40%;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-actions {
+        justify-content: space-between;
+    }
+    .results-info {
+        text-align: center;
+    }
+}

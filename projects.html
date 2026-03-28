@@ -15,11 +15,11 @@
       rel="stylesheet"
     />
     <!-- CSS (cache busted) -->
-    <link rel="stylesheet" href="/assets/css/base.css?v=3" />
-    <link rel="stylesheet" href="/assets/css/theme.css?v=3" />
-    <link rel="stylesheet" href="/assets/css/navbar.css?v=3" />
-    <link rel="stylesheet" href="/assets/css/footer.css?v=3" />
-    <link rel="stylesheet" href="/assets/css/projects-page.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/theme.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/navbar.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/footer.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/projects-page.css?v=4" />
   </head>
   <body>
     <div id="navbar-container"></div>
@@ -63,15 +63,34 @@
                 class="search-input"
               />
             </div>
-            <div class="filter-tags">
-              <button class="filter-btn active" data-filter="all">All</button>
-              <button class="filter-btn" data-filter="java">Java</button>
-              <button class="filter-btn" data-filter="spring">
-                Spring Boot
-              </button>
-              <button class="filter-btn" data-filter="n8n">n8n</button>
-              <button class="filter-btn" data-filter="node">Node.js</button>
-              <button class="filter-btn" data-filter="python">Python</button>
+
+            <div class="filter-controls">
+              <div class="filter-tags">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+                <button class="filter-btn" data-filter="spring">
+                  Spring Boot
+                </button>
+                <button class="filter-btn" data-filter="n8n">n8n</button>
+                <button class="filter-btn" data-filter="node">Node.js</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+              </div>
+
+              <div class="filter-actions">
+                <select id="sortSelect" class="sort-select">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="title-asc">Title A-Z</option>
+                  <option value="title-desc">Title Z-A</option>
+                </select>
+                <button id="clearFiltersBtn" class="clear-filters" style="display: none;">
+                  Clear All Filters
+                </button>
+              </div>
+            </div>
+
+            <div class="results-info">
+              <span id="projectsCount">0</span> projects found
             </div>
           </div>
         </div>
@@ -81,7 +100,7 @@
       <section class="section all-projects">
         <div class="container">
           <div id="all-projects-container" class="projects-grid">
-            <div class="loading-spinner">Loading projects...</div>
+            <!-- Skeleton loader will be shown initially -->
           </div>
           <div id="no-results" class="no-results" style="display: none">
             <svg
@@ -120,7 +139,7 @@
 
     <!-- JS (cache busted) -->
     <script src="/assets/js/data.js?v=2" defer></script>
-    <script src="/assets/js/projects-page.js?v=2" defer></script>
+    <script src="/assets/js/projects-page.js?v=4" defer></script>
     <script src="/assets/js/main.js?v=2" defer></script>
   </body>
 </html>
