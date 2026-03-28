@@ -104,7 +104,7 @@
     color: var(--gray-600);
 }
 
-/* Projects grid */
+/* Projects grid (updated – no image, icon instead) */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -118,22 +118,30 @@
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
     border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
 }
 
-.project-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.project-icon {
+    font-size: 3rem;
+    text-align: center;
+    padding: 2rem 0 1rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    color: var(--primary);
 }
 
 .project-content {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-title {
@@ -147,11 +155,13 @@
     color: var(--gray-600);
     margin-bottom: 1rem;
     font-size: 0.875rem;
+    flex: 1;
 }
 
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .project-link {
@@ -159,10 +169,14 @@
     font-weight: 600;
     font-size: 0.875rem;
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .project-link:hover {
     color: var(--primary-dark);
+    gap: 0.5rem;
 }
 
 /* Contact section */
@@ -256,18 +270,13 @@
     color: #991b1b;
 }
 
-@media (max-width: 768px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-    }
-    
-    .pricing-card.popular {
-        transform: scale(1);
-    }
+/* Section footer */
+.section-footer {
+    text-align: center;
+    margin-top: 3rem;
 }
 
-
-/* Pricing Preview Section */
+/* Pricing Preview Section (if used) */
 .pricing-preview {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
@@ -298,14 +307,17 @@
     box-shadow: var(--shadow-lg);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+    
     .pricing-preview-wrapper h2 {
         font-size: 1.75rem;
     }
-}
-
-/* Add to sections.css */
-.section-footer {
-    text-align: center;
-    margin-top: 3rem;
 }
