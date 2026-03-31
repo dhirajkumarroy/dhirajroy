@@ -1,36 +1,44 @@
-// Projects data for dynamic rendering (clean version - no images)
+// Projects data (production-ready)
+
 const projectsData = [
     {
         id: 1,
         title: "E-Commerce API Platform",
-        description: "Scalable REST API with Spring Boot, JWT authentication, and Redis caching. Handles 10K+ concurrent users.",
-        github: "https://github.com/backenddevpro/ecommerce-api",
-        demo: "https://api-demo.backenddevpro.com"
+        description: "Built a scalable REST API using Spring Boot with JWT authentication, Redis caching, and optimized database queries.",
+        github: "https://github.com/dhirajkumarroy/ecommerce-api",
+        demo: null
     },
     {
         id: 2,
-        title: "n8n Automation Suite",
-        description: "Custom workflow automation for CRM integration, email marketing, and data synchronization across 5+ platforms.",
-        github: "https://github.com/backenddevpro/n8n-workflows",
-        demo: "https://automation-demo.backenddevpro.com"
+        title: "n8n Automation Workflows",
+        description: "Designed and implemented automation workflows for CRM integration, email campaigns, and third-party API sync using n8n.",
+        github: "https://github.com/dhirajkumarroy/n8n-automation",
+        demo: null
     },
     {
         id: 3,
-        title: "Microservices Architecture",
-        description: "Complete system design with service discovery, API gateway, and distributed tracing for enterprise clients.",
-        github: "https://github.com/backenddevpro/microservices-demo",
-        demo: "https://system-demo.backenddevpro.com"
+        title: "Microservices Backend System",
+        description: "Developed a microservices-based architecture with API Gateway, service discovery, and centralized logging for scalability.",
+        github: "https://github.com/dhirajkumarroy/microservices-system",
+        demo: null
     },
     {
         id: 4,
-        title: "Real-time Analytics Dashboard",
-        description: "WebSocket-based real-time data streaming with WebFlux and MongoDB aggregation pipelines.",
-        github: "https://github.com/backenddevpro/analytics-dashboard",
-        demo: "https://analytics-demo.backenddevpro.com"
+        title: "Real-time Analytics Backend",
+        description: "Implemented real-time data processing using Spring WebFlux and MongoDB aggregation pipelines for analytics dashboards.",
+        github: "https://github.com/dhirajkumarroy/realtime-analytics",
+        demo: null
     }
 ];
 
-// Export for Node (optional, safe to keep)
+/* =========================
+   OPTIONAL: Freeze data (prevent mutation)
+========================= */
+Object.freeze(projectsData);
+
+/* =========================
+   EXPORT (Node safe)
+========================= */
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = projectsData;
 }

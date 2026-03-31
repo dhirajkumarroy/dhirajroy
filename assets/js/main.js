@@ -1,39 +1,36 @@
-// Main JavaScript for portfolio
+// Main JavaScript for portfolio (Production-ready)
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNavbar();
     loadComponents();
     loadProjects();
     initContactForm();
     initSmoothScroll();
-    setActiveNavLink();
     initLazyLoading();
 });
 
+/* =========================
+   NAVBAR
+========================= */
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
+
     if (navbar) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
     }
-    
+
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
             menuToggle.setAttribute('aria-expanded', !expanded);
             navLinks.classList.toggle('active');
         });
-        
-        const links = navLinks.querySelectorAll('.nav-link');
-        links.forEach(link => {
+
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
@@ -42,197 +39,197 @@ function initNavbar() {
     }
 }
 
+/* =========================
+   LOAD COMPONENTS
+========================= */
 async function loadComponents() {
     try {
-        const navbarResponse = await fetch('components/navbar.html');
-        const navbarHtml = await navbarResponse.text();
-        document.getElementById('navbar-container').innerHTML = navbarHtml;
-        
-        const footerResponse = await fetch('components/footer.html');
-        const footerHtml = await footerResponse.text();
-        document.getElementById('footer-container').innerHTML = footerHtml;
-        
+        const [navbarRes, footerRes] = await Promise.all([
+            fetch('/components/navbar.html'),
+            fetch('/components/footer.html')
+        ]);
+
+        document.getElementById('navbar-container').innerHTML = await navbarRes.text();
+        document.getElementById('footer-container').innerHTML = await footerRes.text();
+
         initNavbar();
         setActiveNavLink();
+
     } catch (error) {
-        console.error('Error loading components:', error);
+        console.error('Component loading failed:', error);
     }
 }
 
+/* =========================
+   ACTIVE NAV LINK
+========================= */
 function setActiveNavLink() {
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    const currentHash = window.location.hash;
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
+
+    document.querySelectorAll('.nav-link').forEach(link => {
         const href = link.getAttribute('href');
-        
-        if (link.getAttribute('target') === '_blank') return;
-        
-        if (href === '/index.html#home' && currentPath === 'index.html') {
-            link.classList.add('active');
-        } else if (href === '/about.html' && currentPath === 'about.html') {
-            link.classList.add('active');
-        } else if (href === '/projects.html' && currentPath === 'projects.html') {
-            link.classList.add('active');
-        } else if (href === '/contact.html' && currentPath === 'contact.html') {
-            link.classList.add('active');
-        }
+        if (!href || link.target === '_blank') return;
+
+        link.classList.toggle('active', href.includes(currentPath));
     });
-    
-    if (currentPath === 'index.html' && currentHash) {
-        const homeLink = document.querySelector('a[href="/index.html#home"]');
-        if (homeLink) homeLink.classList.add('active');
-    }
 }
 
+/* =========================
+   PROJECTS
+========================= */
 function loadProjects() {
-    const projectsContainer = document.getElementById('projects-container');
-    if (!projectsContainer) return;
-    
-    projectsContainer.innerHTML = '<div class="loading-spinner">Loading projects...</div>';
-    
-    setTimeout(() => {
-        if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
-            renderProjects(projectsData.slice(0, 3));
-        } else {
-            projectsContainer.innerHTML = '<div class="loading-spinner">No projects available</div>';
-        }
-    }, 100);
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
+        renderProjects(projectsData.slice(0, 3));
+    } else {
+        container.innerHTML = '<div>No projects available</div>';
+    }
 }
 
 function renderProjects(projects) {
-    const projectsContainer = document.getElementById('projects-container');
-    if (!projectsContainer) return;
-    
-    projectsContainer.innerHTML = projects.map(project => `
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    container.innerHTML = projects.map(project => `
         <div class="project-card">
             <div class="project-icon">📁</div>
             <div class="project-content">
-                <h3 class="project-title">${escapeHtml(project.title)}</h3>
-                <p class="project-description">${escapeHtml(project.description)}</p>
+                <h3>${escapeHtml(project.title)}</h3>
+                <p>${escapeHtml(project.description)}</p>
                 <div class="project-links">
-                    <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
-                    <a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+                    <a href="${safeUrl(project.github)}" target="_blank" rel="noopener noreferrer">
+                        GitHub →
+                    </a>
+                    ${
+                        project.demo
+                        ? `<a href="${safeUrl(project.demo)}" target="_blank" rel="noopener noreferrer">
+                               Live Demo →
+                           </a>`
+                        : `<span class="disabled">Demo Coming Soon</span>`
+                    }
                 </div>
             </div>
         </div>
     `).join('');
 }
 
+/* =========================
+   CONTACT FORM
+========================= */
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
-    
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         clearErrors();
-        
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        
-        let isValid = true;
-        
-        if (!name) {
-            showError('name', 'Name is required');
-            isValid = false;
-        } else if (name.length < 2) {
-            showError('name', 'Name must be at least 2 characters');
-            isValid = false;
+
+        const name = document.getElementById('name')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        const message = document.getElementById('message')?.value.trim();
+
+        let valid = true;
+
+        if (!name || name.length < 2) {
+            showError('name', 'Minimum 2 characters required');
+            valid = false;
         }
-        
-        if (!email) {
-            showError('email', 'Email is required');
-            isValid = false;
-        } else if (!isValidEmail(email)) {
-            showError('email', 'Please enter a valid email address');
-            isValid = false;
+
+        if (!email || !isValidEmail(email)) {
+            showError('email', 'Valid email required');
+            valid = false;
         }
-        
-        if (!message) {
-            showError('message', 'Message is required');
-            isValid = false;
-        } else if (message.length < 10) {
-            showError('message', 'Message must be at least 10 characters');
-            isValid = false;
+
+        if (!message || message.length < 10) {
+            showError('message', 'Minimum 10 characters required');
+            valid = false;
         }
-        
-        if (isValid) {
-            const feedback = document.getElementById('form-feedback');
-            feedback.className = 'form-feedback success';
-            feedback.textContent = 'Thank you! I\'ll get back to you within 24 hours.';
-            feedback.style.display = 'block';
-            form.reset();
-            
-            setTimeout(() => {
-                feedback.style.display = 'none';
-            }, 5000);
-        }
+
+        if (!valid) return;
+
+        const feedback = document.getElementById('form-feedback');
+        feedback.className = 'form-feedback success';
+        feedback.textContent = "Message sent successfully!";
+        feedback.style.display = 'block';
+
+        form.reset();
+
+        setTimeout(() => {
+            feedback.style.display = 'none';
+        }, 4000);
     });
 }
 
-function showError(fieldId, message) {
-    const errorElement = document.getElementById(`${fieldId}-error`);
-    if (errorElement) {
-        errorElement.textContent = message;
-        errorElement.style.display = 'block';
+/* =========================
+   HELPERS
+========================= */
+function showError(id, msg) {
+    const el = document.getElementById(`${id}-error`);
+    if (el) {
+        el.textContent = msg;
+        el.style.display = 'block';
     }
 }
 
 function clearErrors() {
-    const errors = document.querySelectorAll('.error-message');
-    errors.forEach(error => {
-        error.style.display = 'none';
-        error.textContent = '';
+    document.querySelectorAll('.error-message').forEach(e => {
+        e.textContent = '';
+        e.style.display = 'none';
     });
 }
 
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-    return emailRegex.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+/* =========================
+   SMOOTH SCROLL
+========================= */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                history.pushState(null, null, targetId);
-                setActiveNavLink();
-            }
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 }
 
+/* =========================
+   LAZY LOADING
+========================= */
 function initLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.loading = 'lazy';
-                    imageObserver.unobserve(img);
-                }
-            });
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.loading = 'lazy';
+                observer.unobserve(entry.target);
+            }
         });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
+    });
+
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => observer.observe(img));
 }
 
+/* =========================
+   SECURITY HELPERS
+========================= */
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function safeUrl(url) {
+    try {
+        return new URL(url).href;
+    } catch {
+        return '#';
+    }
 }

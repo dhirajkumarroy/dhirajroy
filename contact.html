@@ -3,138 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get in touch with Dhiraj Roy for backend development, API services, and automation consulting.">
+    
     <title>Contact Dhiraj Roy | Backend Developer</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Contact Dhiraj Roy for backend development, API projects, and collaboration opportunities.">
+    <meta name="author" content="Dhiraj Roy">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- CSS with versioning and absolute paths -->
-    <link rel="stylesheet" href="/assets/css/base.css?v=4">
-    <link rel="stylesheet" href="/assets/css/theme.css?v=4">
-    <link rel="stylesheet" href="/assets/css/navbar.css?v=4">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=4">
-    <link rel="stylesheet" href="/assets/css/contact-page.css?v=4">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/contact-page.css">
 </head>
+
 <body>
+
+    <!-- Navbar -->
     <div id="navbar-container"></div>
-    
+
     <main>
-        <!-- Page Hero -->
+
+        <!-- Hero -->
         <section class="page-hero">
             <div class="container">
                 <h1>Let's Connect</h1>
-                <p>Have a project? Let's discuss how I can help</p>
+                <p>Open to backend roles, internships, and collaboration opportunities</p>
             </div>
         </section>
-        
+
         <!-- Contact Options -->
         <section class="section contact-options">
             <div class="container">
                 <div class="contact-options-grid">
+
+                    <!-- Email -->
                     <div class="contact-option-card">
                         <div class="contact-option-icon">📧</div>
                         <h3>Email Me</h3>
-                        <p>For detailed inquiries and project discussions</p>
-                        <a href="mailto:dheerajkuma.ara1111@gmail.com" class="btn btn-outline">dheerajkuma.ara1111@gmail.com</a>
+                        <p>For job opportunities, internships, or project discussions</p>
+                        <a href="mailto:dhiraj@dhirajroy.com" class="btn btn-outline">
+                            dhiraj@dhirajroy.com
+                        </a>
                     </div>
+
+                    <!-- WhatsApp -->
                     <div class="contact-option-card">
                         <div class="contact-option-icon">💬</div>
                         <h3>WhatsApp</h3>
-                        <p>For quick questions and immediate responses</p>
-                        <a href="https://wa.me/919876543210?text=Hi%20Dhiraj,%20I'm%20interested%20in%20your%20backend%20services!" target="_blank" class="btn btn-outline">Chat on WhatsApp</a>
+                        <p>For quick communication</p>
+                        <a href="https://wa.me/919304730973" target="_blank" class="btn btn-outline">
+                            Chat on WhatsApp
+                        </a>
                     </div>
+
+                    <!-- Social -->
                     <div class="contact-option-card">
                         <div class="contact-option-icon">🌐</div>
-                        <h3>Social Media</h3>
-                        <p>Follow me for updates and insights</p>
+                        <h3>Social Profiles</h3>
+                        <p>Explore my work and connect with me</p>
                         <div class="social-links">
                             <a href="https://github.com/dhirajkumarroy" target="_blank">GitHub</a>
                             <a href="https://www.linkedin.com/in/dhiraj-kumar-roy/" target="_blank">LinkedIn</a>
-                            <a href="https://twitter.com/DHIRAJK20946041" target="_blank">Twitter</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
-        
+
         <!-- Contact Form -->
         <section class="section contact-form-section">
             <div class="container">
                 <div class="form-wrapper">
+
                     <h2>Send a Message</h2>
-                    <p>Fill out the form below and I'll get back to you within 24 hours</p>
-                    
+                    <p>I’ll respond within 24–48 hours</p>
+
                     <form id="full-contact-form" class="contact-form" novalidate>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="full-name">Full Name *</label>
                                 <input type="text" id="full-name" placeholder="Your name" required>
                                 <small class="error-message" id="full-name-error"></small>
                             </div>
+
                             <div class="form-group">
-                                <label for="full-email">Email Address *</label>
+                                <label for="full-email">Email *</label>
                                 <input type="email" id="full-email" placeholder="Email address" required>
                                 <small class="error-message" id="full-email-error"></small>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" placeholder="+91 98765 43210">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" placeholder="+91 93047 30973">
                             </div>
+
                             <div class="form-group">
                                 <label for="subject">Subject *</label>
-                                <input type="text" id="subject" placeholder="Project inquiry / Collaboration" required>
+                                <input type="text" id="subject" placeholder="Job / Internship / Project" required>
                                 <small class="error-message" id="subject-error"></small>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="full-message">Message *</label>
-                            <textarea id="full-message" rows="5" placeholder="Tell me about your project, requirements, and timeline..." required></textarea>
+                            <textarea id="full-message" rows="5" placeholder="Tell me about your requirement..." required></textarea>
                             <small class="error-message" id="full-message-error"></small>
                         </div>
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="newsletter"> Subscribe to my newsletter for backend tips
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message →</button>
+
+                        <button type="submit" class="btn btn-primary">
+                            Send Message →
+                        </button>
+
                         <div id="full-form-feedback" class="form-feedback"></div>
+
                     </form>
+
                 </div>
             </div>
         </section>
-        
-        <!-- FAQ Section -->
+
+        <!-- FAQ (Updated for student profile) -->
         <section class="section faq">
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
+
                 <div class="faq-grid">
+
                     <div class="faq-item">
-                        <h3>How quickly can you start?</h3>
-                        <p>I typically can start within 1-2 weeks, depending on current project load. Let's discuss your timeline.</p>
+                        <h3>Are you open to internships or full-time roles?</h3>
+                        <p>Yes, I am actively looking for backend developer roles, internships, and learning opportunities.</p>
                     </div>
+
                     <div class="faq-item">
-                        <h3>What's your typical project process?</h3>
-                        <p>Discovery → Planning → Development → Testing → Deployment → Support. I ensure clear communication at every step.</p>
+                        <h3>What technologies do you work with?</h3>
+                        <p>I primarily work with Java, Spring Boot, REST APIs, MySQL, and also explore Python and Machine Learning.</p>
                     </div>
+
                     <div class="faq-item">
-                        <h3>Do you work with international clients?</h3>
-                        <p>Yes! I work with clients worldwide. My hours are flexible to accommodate different time zones.</p>
+                        <h3>Can you work on real-world backend projects?</h3>
+                        <p>Yes, I have built multiple backend systems including authentication systems, booking platforms, and AI applications.</p>
                     </div>
+
                     <div class="faq-item">
-                        <h3>What about ongoing support?</h3>
-                        <p>I offer maintenance and support packages after project completion to ensure everything runs smoothly.</p>
+                        <h3>Where can I see your work?</h3>
+                        <p>You can explore my GitHub and projects section for real implementations.</p>
                     </div>
+
                 </div>
             </div>
         </section>
+
     </main>
-    
+
+    <!-- Footer -->
     <div id="footer-container"></div>
-    
-    <!-- JS with versioning and absolute paths -->
-    <script src="/assets/js/contact-page.js?v=2" defer></script>
-    <script src="/assets/js/main.js?v=2" defer></script>
+
+    <!-- JS -->
+    <script src="/assets/js/contact-page.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+
 </body>
 </html>
