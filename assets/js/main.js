@@ -1,4 +1,4 @@
-// Main JavaScript for portfolio (Production-ready)
+// Main JavaScript (Production-ready)
 
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents();
@@ -84,32 +84,68 @@ function loadProjects() {
     if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
         renderProjects(projectsData.slice(0, 3));
     } else {
-        container.innerHTML = '<div>No projects available</div>';
+        container.innerHTML = '<div class="loading-spinner">No projects available</div>';
     }
 }
 
+/* ICON LOGIC */
+function getProjectIcon(title) {
+    const t = title.toLowerCase();
+
+    if (t.includes('e-commerce')) return '🛒';
+    if (t.includes('automation') || t.includes('n8n')) return '🤖';
+    if (t.includes('microservice')) return '🏗️';
+    if (t.includes('analytics')) return '📊';
+
+    return '📁';
+}
+
+/* RENDER PROJECTS */
 function renderProjects(projects) {
     const container = document.getElementById('projects-container');
     if (!container) return;
 
     container.innerHTML = projects.map(project => `
         <div class="project-card">
-            <div class="project-icon">📁</div>
+
+            <div class="project-icon">
+                ${getProjectIcon(project.title)}
+            </div>
+
             <div class="project-content">
-                <h3>${escapeHtml(project.title)}</h3>
-                <p>${escapeHtml(project.description)}</p>
+
+                <h3 class="project-title">
+                    ${escapeHtml(project.title)}
+                </h3>
+
+                <p class="project-description">
+                    ${escapeHtml(project.description)}
+                </p>
+
                 <div class="project-links">
-                    <a href="${safeUrl(project.github)}" target="_blank" rel="noopener noreferrer">
+
+                    <a href="${safeUrl(project.github)}"
+                       class="project-link"
+                       target="_blank"
+                       rel="noopener noreferrer">
                         GitHub →
                     </a>
+
                     ${
                         project.demo
-                        ? `<a href="${safeUrl(project.demo)}" target="_blank" rel="noopener noreferrer">
-                               Live Demo →
+                        ? `<a href="${safeUrl(project.demo)}"
+                              class="project-link"
+                              target="_blank"
+                              rel="noopener noreferrer">
+                              Live Demo →
                            </a>`
-                        : `<span class="disabled">Demo Coming Soon</span>`
+                        : `<span class="project-link disabled">
+                              Demo Coming Soon
+                           </span>`
                     }
+
                 </div>
+
             </div>
         </div>
     `).join('');
@@ -218,7 +254,7 @@ function initLazyLoading() {
 }
 
 /* =========================
-   SECURITY HELPERS
+   SECURITY
 ========================= */
 function escapeHtml(text) {
     const div = document.createElement('div');
