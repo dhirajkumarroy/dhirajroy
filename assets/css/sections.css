@@ -65,21 +65,22 @@
    🔥 ICON (FINAL FIX)
 ========================= */
 .project-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    width: 100%;
-    height: 90px;
+    width: 100% !important;
+    height: 100px !important;
 
-    font-size: 2rem;
+    font-size: 2.5rem !important;
+    line-height: 1 !important;
 
     background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
     color: var(--primary);
 
     border-bottom: 1px solid #e5e7eb;
 
-    flex: 0 0 auto;   /* 🔥 KEY FIX */
+    flex: 0 0 auto !important;
 }
 
 /* =========================
