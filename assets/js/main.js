@@ -108,13 +108,6 @@ function renderProjects(projects) {
     container.innerHTML = projects.map(project => `
         <div class="project-card">
 
-            <!-- ✅ FIXED ICON -->
-            <div class="project-icon">
-                <span class="icon-inner">
-                    ${getProjectIcon(project.title)}
-                </span>
-            </div>
-
             <div class="project-content">
 
                 <h3 class="project-title">
