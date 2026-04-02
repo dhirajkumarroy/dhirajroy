@@ -108,8 +108,11 @@ function renderProjects(projects) {
     container.innerHTML = projects.map(project => `
         <div class="project-card">
 
+            <!-- ✅ FIXED ICON -->
             <div class="project-icon">
-                ${getProjectIcon(project.title)}
+                <span class="icon-inner">
+                    ${getProjectIcon(project.title)}
+                </span>
             </div>
 
             <div class="project-content">
@@ -122,7 +125,6 @@ function renderProjects(projects) {
                     ${escapeHtml(project.description)}
                 </p>
 
-                <!-- SAME AS PROJECT PAGE -->
                 <div class="project-tags">
                     ${generateTags(project)}
                 </div>
