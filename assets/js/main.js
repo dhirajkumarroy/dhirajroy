@@ -122,6 +122,11 @@ function renderProjects(projects) {
                     ${escapeHtml(project.description)}
                 </p>
 
+                <!-- SAME AS PROJECT PAGE -->
+                <div class="project-tags">
+                    ${generateTags(project)}
+                </div>
+
                 <div class="project-links">
 
                     <a href="${safeUrl(project.github)}"
@@ -268,4 +273,19 @@ function safeUrl(url) {
     } catch {
         return '#';
     }
+}
+
+function generateTags(project) {
+    const tags = [];
+    const text = (project.title + ' ' + project.description).toLowerCase();
+
+    if (text.includes('spring') || text.includes('java')) tags.push('Java');
+    if (text.includes('n8n')) tags.push('n8n');
+    if (text.includes('api')) tags.push('REST API');
+    if (text.includes('microservice')) tags.push('Microservices');
+    if (text.includes('automation')) tags.push('Automation');
+
+    return tags.slice(0, 3)
+        .map(tag => `<span class="project-tag">${escapeHtml(tag)}</span>`)
+        .join('');
 }
