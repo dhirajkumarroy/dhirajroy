@@ -275,6 +275,7 @@ function generateTags(project) {
     const text = (project.title + ' ' + project.description).toLowerCase();
 
     if (text.includes('spring') || text.includes('java')) tags.push('Java');
+    if (text.includes('Node.js') || text.includes('node')) tags.push('Node.js');
     if (text.includes('n8n')) tags.push('n8n');
     if (text.includes('api')) tags.push('REST API');
     if (text.includes('microservice')) tags.push('Microservices');
