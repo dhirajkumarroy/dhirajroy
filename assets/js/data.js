@@ -7,7 +7,7 @@ const projectsData = [
     description:
       "Designed and built a scalable authentication system with Node.js and MongoDB featuring JWT-based access & refresh tokens, role-based access control, secure password hashing, protected APIs, and Swagger documentation for seamless frontend integration.",
     github: "https://github.com/dhirajkumarroy/production-auth-system",
-    demo: null,
+    demo: "https://production-auth-system.onrender.com/api-docs/#/",
   },
   {
     id: 2,
