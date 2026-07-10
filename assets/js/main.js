@@ -221,7 +221,7 @@ function renderProjects(projects) {
                 </div>
 
                 <div class="project-tags">
-                    ${project.techBadges.map(tech => `<span class="project-tag">${escapeHtml(tech)}</span>`).join('')}
+                    ${(project.techBadges || []).map(tech => `<span class="project-tag">${escapeHtml(tech)}</span>`).join('')}
                 </div>
 
                 <div class="project-links">

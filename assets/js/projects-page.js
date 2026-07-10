@@ -112,12 +112,12 @@ function renderFilteredProjects() {
                 <div style="margin-bottom: 1.25rem;">
                     <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.4rem;">Key Features:</span>
                     <ul style="padding-left: 1.15rem; margin: 0; font-size: 0.85rem; color: var(--text-secondary); list-style: disc; display: flex; flex-direction: column; gap: 0.35rem;">
-                        ${project.features.map(feat => `<li>${escapeHtml(feat)}</li>`).join('')}
+                        ${(project.features || []).map(feat => `<li>${escapeHtml(feat)}</li>`).join('')}
                     </ul>
                 </div>
 
                 <div class="project-tags" style="margin-bottom: 1.25rem;">
-                    ${project.techBadges.map(tech => `<span class="project-tag">${escapeHtml(tech)}</span>`).join('')}
+                    ${(project.techBadges || []).map(tech => `<span class="project-tag">${escapeHtml(tech)}</span>`).join('')}
                 </div>
 
                 <div class="project-links">
