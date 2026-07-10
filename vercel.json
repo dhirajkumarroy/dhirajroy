@@ -42,11 +42,6 @@
 
   "redirects": [
     {
-      "source": "/services",
-      "destination": "https://scaleforgehq.com",
-      "permanent": true
-    },
-    {
       "source": "/pricing",
       "destination": "https://scaleforgehq.com/pricing",
       "permanent": true

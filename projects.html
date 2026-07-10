@@ -1,13 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Explore the portfolio of Dhiraj Roy – backend development, API projects, and automation systems. Filter by tech stack and search."
+      content="Explore production backend systems and full-stack solutions built by Dhiraj Roy – featuring AUConnect, AUCart, and AUNext."
     />
     <title>Projects | Dhiraj Roy Portfolio</title>
+    
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LS1127PHB"></script>
     <script>
@@ -18,30 +19,32 @@
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8526944296509002"
      crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- CSS (cache busted) -->
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/base.css?v=4" />
     <link rel="stylesheet" href="/assets/css/theme.css?v=4" />
     <link rel="stylesheet" href="/assets/css/navbar.css?v=4" />
     <link rel="stylesheet" href="/assets/css/footer.css?v=4" />
     <link rel="stylesheet" href="/assets/css/projects-page.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/sections.css?v=4" />
   </head>
   <body>
+    <!-- Navbar -->
     <div id="navbar-container"></div>
 
     <main>
       <!-- Page Hero -->
       <section class="page-hero">
         <div class="container">
-          <h1>My Projects</h1>
-          <p>
-            A collection of backend systems and automation solutions I've built
-          </p>
+          <h1 class="gradient-text">My Projects</h1>
+          <p>A showcase of backend architectures, robust REST APIs, and full-stack business tools</p>
         </div>
       </section>
 
@@ -50,26 +53,11 @@
         <div class="container">
           <div class="filter-wrapper">
             <div class="search-box">
-              <svg
-                class="search-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              <span class="search-icon">🔍</span>
               <input
                 type="text"
                 id="searchInput"
-                placeholder="Search projects by title, description..."
+                placeholder="Search projects by title, keywords, or architecture..."
                 class="search-input"
               />
             </div>
@@ -77,13 +65,11 @@
             <div class="filter-controls">
               <div class="filter-tags">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="java">Java</button>
-                <button class="filter-btn" data-filter="spring">
-                  Spring Boot
-                </button>
-                <button class="filter-btn" data-filter="n8n">n8n</button>
+                <button class="filter-btn" data-filter="java">Java / Spring Boot</button>
+                <button class="filter-btn" data-filter="laravel">PHP / Laravel</button>
                 <button class="filter-btn" data-filter="node">Node.js</button>
-                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="react">React</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
               </div>
 
               <div class="filter-actions">
@@ -94,13 +80,13 @@
                   <option value="title-desc">Title Z-A</option>
                 </select>
                 <button id="clearFiltersBtn" class="clear-filters" style="display: none;">
-                  Clear All Filters
+                  Clear Filters
                 </button>
               </div>
             </div>
 
-            <div class="results-info">
-              <span id="projectsCount">0</span> projects found
+            <div class="results-info" style="margin-top: 1.5rem; text-align: left;">
+              <span id="projectsCount">0</span> projects identified
             </div>
           </div>
         </div>
@@ -110,8 +96,9 @@
       <section class="section all-projects">
         <div class="container">
           <div id="all-projects-container" class="projects-grid">
-            <!-- Skeleton loader will be shown initially -->
+            <!-- Skeleton loader will be shown initially by JS -->
           </div>
+          
           <div id="no-results" class="no-results" style="display: none">
             <svg
               width="64"
@@ -128,7 +115,7 @@
               />
             </svg>
             <h3>No projects found</h3>
-            <p>Try adjusting your search or filter</p>
+            <p>Try refining your search keyword or selecting a different category filter</p>
           </div>
         </div>
       </section>
@@ -137,19 +124,20 @@
       <section class="section cta-section">
         <div class="container">
           <div class="cta-wrapper">
-            <h2>Have a Project in Mind?</h2>
-            <p>Let's build something great together</p>
-            <a href="/contact.html" class="btn btn-primary">Hire Me →</a>
+            <h2>Need a Custom Backend Solution?</h2>
+            <p>Let's collaborate to build highly scalable architectures, custom APIs, or full-stack platforms</p>
+            <a href="/contact.html" class="btn btn-primary">Let's Talk →</a>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- JS (cache busted) -->
+    <!-- JS -->
     <script src="/assets/js/data.js?v=4" defer></script>
     <script src="/assets/js/projects-page.js?v=4" defer></script>
-    <script src="/assets/js/main.js?v=3" defer></script>
+    <script src="/assets/js/main.js?v=4" defer></script>
   </body>
 </html>

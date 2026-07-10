@@ -13,37 +13,48 @@ html {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
-    color: #1f2937;
-    background-color: #ffffff;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.25;
+    color: var(--text-primary);
+    transition: color 0.4s ease;
 }
 
 h1 {
     font-size: 3.5rem;
+    letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+    letter-spacing: -0.02em;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
 }
 
 h4 {
     font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1.25rem;
 }
 
 /* Images */
@@ -57,7 +68,7 @@ img {
 a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition, all 0.3s ease);
+    transition: var(--transition);
 }
 
 /* Buttons */
@@ -75,19 +86,21 @@ ul, ol {
 
 /* Utility classes */
 .section {
-    padding: 5rem 0;
+    padding: 6.5rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .section-header h2 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 1rem;
-    color: #111827;
+    color: var(--text-primary);
     position: relative;
     display: inline-block;
 }
@@ -98,37 +111,39 @@ ul, ol {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 3px;
+    width: 70px;
+    height: 4px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
 }
 
 .section-header p {
     font-size: 1.125rem;
-    color: #6b7280;
-    max-width: 600px;
+    color: var(--text-secondary);
+    max-width: 650px;
     margin: 1.5rem auto 0;
+    line-height: 1.6;
 }
 
 /* Loading spinner */
 .loading-spinner {
     text-align: center;
     padding: 3rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 1.1rem;
 }
 
 .loading-spinner::after {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    border: 2px solid #e5e7eb;
-    border-top-color: var(--primary, #3b82f6);
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--primary);
     border-radius: 50%;
     animation: spin 0.6s linear infinite;
+    vertical-align: middle;
 }
 
 @keyframes spin {
@@ -140,37 +155,37 @@ ul, ol {
 /* Section footer */
 .section-footer {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
 }
 
 /* Responsive Design */
 @media (max-width: 968px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1.75rem;
     }
     
     .section {
-        padding: 4rem 0;
+        padding: 5rem 0;
     }
     
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
     
     .section-header p {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
     
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.75rem;
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
     
     h3 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -180,28 +195,28 @@ ul, ol {
     }
     
     .section {
-        padding: 3rem 0;
+        padding: 4rem 0;
     }
     
     .section-header {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
     }
     
     .section-header h2 {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
     }
     
     .section-header h2::after {
-        width: 40px;
+        width: 50px;
         bottom: -8px;
     }
     
     h1 {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
     
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
     }
 }
 
@@ -211,11 +226,11 @@ ul, ol {
     }
     
     .section {
-        padding: 2.5rem 0;
+        padding: 3.5rem 0;
     }
     
     .section-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.65rem;
     }
 }
 
@@ -229,27 +244,28 @@ ul, ol {
     }
 }
 
-/* Selection */
+/* Selection highlight using orange branding tint */
 ::selection {
-    background: rgba(102, 126, 234, 0.2);
-    color: var(--primary, #3b82f6);
+    background: rgba(249, 115, 22, 0.25);
+    color: var(--primary);
 }
 
-/* Scrollbar */
+/* Modern Webkit Scrollbars tinted with orange gradients */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 5px;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    background: var(--primary-dark);
 }

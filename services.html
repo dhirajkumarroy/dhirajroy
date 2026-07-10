@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional backend development services including API development, n8n automation, and system design.">
-    <title>Services | Backend Dev Pro</title>
+    <meta name="description" content="Professional backend and full-stack development services by Dhiraj Roy – including REST APIs, Laravel, Spring Boot, React, business automation, and database design.">
+    <title>Services | Dhiraj Roy Portfolio</title>
+    
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LS1127PHB"></script>
     <script>
@@ -15,63 +16,118 @@
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8526944296509002"
      crossorigin="anonymous"></script>
+     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/theme.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/sections.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/base.css?v=4">
+    <link rel="stylesheet" href="assets/css/theme.css?v=4">
+    <link rel="stylesheet" href="assets/css/navbar.css?v=4">
+    <link rel="stylesheet" href="assets/css/sections.css?v=4">
+    <link rel="stylesheet" href="assets/css/footer.css?v=4">
 </head>
 <body>
+    <!-- Navbar Container -->
     <div id="navbar-container"></div>
+    
     <main>
-        <section class="section" style="padding-top: 6rem;">
+        <!-- Page Hero -->
+        <section class="page-hero" style="padding: 9rem 0 5rem; background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-align: center; position: relative; overflow: hidden;">
+            <div class="glow-blur" style="top: 10%; left: -5%;"></div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <h1 class="gradient-text" style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em;">My Services</h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Comprehensive engineering solutions designed to build scalable systems and digital platforms</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" style="background-color: var(--bg-primary);">
             <div class="container">
-                <div class="section-header">
-                    <h1>Our Services</h1>
-                    <p>Comprehensive backend solutions tailored to your needs</p>
-                </div>
-                <div class="services-grid">
+                <div class="services-grid" style="margin-top: 2rem;">
+                    <!-- Service 1 -->
                     <div class="service-card">
                         <div class="service-icon">⚙️</div>
-                        <h3>Backend API Development</h3>
-                        <p>RESTful & GraphQL APIs with Spring Boot, Node.js, authentication, rate limiting, and high performance.</p>
-                        <ul style="margin-top: 1rem; text-align: left;">
-                            <li>✅ JWT/OAuth2 Authentication</li>
-                            <li>✅ Database Integration (PostgreSQL, MongoDB)</li>
-                            <li>✅ API Documentation (Swagger/OpenAPI)</li>
-                            <li>✅ Performance Optimization</li>
+                        <h3>Backend Development</h3>
+                        <p>Designing secure server-side logic, data validations, and business architectures using industry-standard frameworks.</p>
+                        <ul style="margin-top: 1.5rem; text-align: left; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Spring Boot & Laravel frameworks</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Multithreaded processors & cron tasks</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Clean architecture design patterns</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Logging systems & unit test coverage</li>
                         </ul>
                     </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Full-Stack Development</h3>
+                        <p>Constructing end-to-end applications that bridge complex backend logic to fluid, responsive, and intuitive React layouts.</p>
+                        <ul style="margin-top: 1.5rem; text-align: left; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> React component composition & hooks</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Redux Toolkit & state management</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Token authorization storage patterns</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Adaptive mobile-first client structures</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3>REST API Development</h3>
+                        <p>Designing secure, standard, and rate-limited REST controllers documented comprehensively for integrations.</p>
+                        <ul style="margin-top: 1.5rem; text-align: left; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> JWT token authentication & rotations</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Strict CORS policies & rate limit rules</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> JSON body validations & error codes</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Swagger/OpenAPI interactive documents</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
                     <div class="service-card">
                         <div class="service-icon">🤖</div>
-                        <h3>Automation Systems (n8n)</h3>
-                        <p>Custom n8n workflows, third-party integrations, data sync, and process automation for efficiency.</p>
-                        <ul style="margin-top: 1rem; text-align: left;">
-                            <li>✅ CRM & Marketing Automation</li>
-                            <li>✅ Data Synchronization</li>
-                            <li>✅ Webhook Integrations</li>
-                            <li>✅ Scheduled Workflows</li>
+                        <h3>Business Automation</h3>
+                        <p>Orchestrating workflow sequences, syncing distinct databases, and automating tasks using custom scripts and n8n.</p>
+                        <ul style="margin-top: 1.5rem; text-align: left; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Multi-step workflow orchestration</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Webhook trigger controllers & listeners</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> CRM & email synchronization handlers</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Scheduled cron automation workflows</li>
                         </ul>
                     </div>
+
+                    <!-- Service 5 -->
                     <div class="service-card">
-                        <div class="service-icon">🏛️</div>
-                        <h3>System Design</h3>
-                        <p>Scalable architecture, microservices, database design, caching strategies, and cloud deployment.</p>
-                        <ul style="margin-top: 1rem; text-align: left;">
-                            <li>✅ Microservices Architecture</li>
-                            <li>✅ Load Balancing & Caching (Redis)</li>
-                            <li>✅ Cloud Deployment (AWS/GCP/Azure)</li>
-                            <li>✅ Scalability Planning</li>
+                        <div class="service-icon">🗄️</div>
+                        <h3>Database Design</h3>
+                        <p>Structuring relational databases and NoSQL stores, normalizing tables, creating indices, and tuning queries.</p>
+                        <ul style="margin-top: 1.5rem; text-align: left; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Schema design (PostgreSQL, MySQL, Mongo)</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Relational indexing & composite keys</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Query caching & execution reviews</li>
+                            <li><span style="color: var(--primary); margin-right: 6px;">✔</span> Safe data migration script setups</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); text-align: center; padding: 5.5rem 0;">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800;">Have a Project Scope Ready?</h2>
+                <p style="margin-bottom: 2.25rem; color: var(--text-secondary); font-size: 1.125rem;">Let's establish a technical discussion and build a robust solution for your workflow</p>
+                <a href="/contact.html" class="btn btn-primary">Start Technical Conversation →</a>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer Container -->
     <div id="footer-container"></div>
-    <script src="assets/js/main.js" defer></script>
+    
+    <!-- JS -->
+    <script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ function loadAllProjects() {
     // Show skeleton loader
     projectsContainer.innerHTML = `
         <div class="project-card skeleton">
-            <div class="project-icon skeleton-icon"></div>
+            <div class="skeleton-icon"></div>
             <div class="project-content">
                 <div class="skeleton-title"></div>
                 <div class="skeleton-description"></div>
@@ -21,7 +21,7 @@ function loadAllProjects() {
                 <div class="skeleton-links"></div>
             </div>
         </div>
-    `.repeat(6);
+    `.repeat(3);
 
     setTimeout(() => {
         if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
@@ -30,7 +30,15 @@ function loadAllProjects() {
         } else {
             projectsContainer.innerHTML = '<div class="loading-spinner">No projects available</div>';
         }
-    }, 500);
+    }, 400);
+}
+
+function getProjectIcon(title) {
+    const t = title.toLowerCase();
+    if (t.includes('connect')) return '💬';
+    if (t.includes('cart') || t.includes('kart')) return '🛒';
+    if (t.includes('next')) return '⚡';
+    return '📁';
 }
 
 function renderFilteredProjects() {
@@ -45,16 +53,16 @@ function renderFilteredProjects() {
 
         let matchesTag = true;
         if (activeFilter !== 'all') {
+            const techText = (project.title + ' ' + project.description + ' ' + project.techBadges.join(' ')).toLowerCase();
             const techKeywords = {
-                java: ['java', 'spring', 'jpa'],
-                spring: ['spring', 'boot', 'java'],
-                n8n: ['n8n', 'automation', 'workflow'],
+                java: ['java', 'spring', 'jpa', 'boot'],
+                laravel: ['laravel', 'php'],
                 node: ['node', 'express', 'javascript'],
-                python: ['python', 'django', 'flask']
+                react: ['react'],
+                automation: ['n8n', 'automation', 'workflow']
             };
-            const keywords = techKeywords[activeFilter] || [];
-            const projectText = (project.title + ' ' + project.description).toLowerCase();
-            matchesTag = keywords.some(keyword => projectText.includes(keyword));
+            const keywords = techKeywords[activeFilter] || [activeFilter];
+            matchesTag = keywords.some(keyword => techText.includes(keyword));
         }
 
         return matchesSearch && matchesTag;
@@ -83,17 +91,50 @@ function renderFilteredProjects() {
 
     noResults.style.display = 'none';
     container.innerHTML = filtered.map(project => `
-        <div class="project-card">
-            <div class="project-icon">📁</div>
+        <div class="project-card reveal active">
+            <div class="project-icon">
+                ${getProjectIcon(project.title)}
+            </div>
             <div class="project-content">
-                <h3 class="project-title">${escapeHtml(project.title)}</h3>
-                <p class="project-description">${escapeHtml(project.description)}</p>
-                <div class="project-tags">
-                    ${generateTags(project)}
+                <div class="project-header">
+                    <h3 class="project-title">${escapeHtml(project.title)}</h3>
+                    <span class="badge badge-${project.status === 'Live' ? 'live' : project.status === 'In Development' ? 'dev' : 'upcoming'}">
+                        ${project.status === 'Live' ? '● ' : ''}${project.status}
+                    </span>
                 </div>
+                <p class="project-description">${escapeHtml(project.description)}</p>
+                
+                <div style="margin-bottom: 1rem;">
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">Architecture:</span>
+                    <span style="font-size: 0.85rem; color: var(--text-secondary);">${escapeHtml(project.architecture)}</span>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.4rem;">Key Features:</span>
+                    <ul style="padding-left: 1.15rem; margin: 0; font-size: 0.85rem; color: var(--text-secondary); list-style: disc; display: flex; flex-direction: column; gap: 0.35rem;">
+                        ${project.features.map(feat => `<li>${escapeHtml(feat)}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="project-tags" style="margin-bottom: 1.25rem;">
+                    ${project.techBadges.map(tech => `<span class="project-tag">${escapeHtml(tech)}</span>`).join('')}
+                </div>
+
                 <div class="project-links">
-                    <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
-                    <a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+                    <a href="${safeUrl(project.github)}" 
+                       class="project-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                       GitHub →
+                    </a>
+                    ${
+                        project.demo 
+                        ? `<a href="${safeUrl(project.demo)}" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo →</a>`
+                        : `<span class="project-link disabled">Demo Coming Soon</span>`
+                    }
+                    <a href="${safeUrl(project.caseStudy)}" class="project-link">
+                       Case Study →
+                    </a>
                 </div>
             </div>
         </div>
@@ -104,7 +145,6 @@ function sortProjects(projects, sortBy) {
     const sorted = [...projects];
     switch (sortBy) {
         case 'newest':
-            // Assume projects have an id (newer = higher id)
             return sorted.sort((a, b) => b.id - a.id);
         case 'oldest':
             return sorted.sort((a, b) => a.id - b.id);
@@ -115,20 +155,6 @@ function sortProjects(projects, sortBy) {
         default:
             return sorted;
     }
-}
-
-function generateTags(project) {
-    const tags = [];
-    const text = (project.title + ' ' + project.description).toLowerCase();
-
-    if (text.includes('spring') || text.includes('java')) tags.push('Java');
-    if (text.includes('n8n')) tags.push('n8n');
-    if (text.includes('node')) tags.push('Node.js');
-    if (text.includes('api')) tags.push('REST API');
-    if (text.includes('microservice')) tags.push('Microservices');
-    if (text.includes('automation')) tags.push('Automation');
-
-    return tags.slice(0, 3).map(tag => `<span class="project-tag">${escapeHtml(tag)}</span>`).join('');
 }
 
 function initFilters() {
@@ -173,4 +199,13 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function safeUrl(url) {
+    try {
+        if (url.startsWith('/')) return url;
+        return new URL(url).href;
+    } catch {
+        return '#';
+    }
 }
