@@ -13,6 +13,7 @@ function initFullContactForm() {
         
         const name = document.getElementById('full-name').value.trim();
         const email = document.getElementById('full-email').value.trim();
+        const phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
         const subject = document.getElementById('subject').value.trim();
         const message = document.getElementById('full-message').value.trim();
         
@@ -49,14 +50,62 @@ function initFullContactForm() {
         
         if (isValid) {
             const feedback = document.getElementById('full-form-feedback');
-            feedback.className = 'form-feedback success';
-            feedback.textContent = 'Thank you! I\'ll get back to you within 24 hours.';
-            feedback.style.display = 'block';
-            form.reset();
+            const submitBtn = form.querySelector('button[type="submit"]');
             
-            setTimeout(() => {
-                feedback.style.display = 'none';
-            }, 5000);
+            // Set loading state
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending Message...';
+            
+            feedback.style.display = 'none';
+            feedback.className = 'form-feedback';
+
+            // Auto-resolve base URL for local development and production domains
+            const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? 'http://localhost:5000/api/v1'
+                : 'https://api.dhirajroy.com/api/v1';
+
+            fetch(`${API_BASE}/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    full_name: name,
+                    email: email,
+                    phone: phone || null,
+                    subject: subject,
+                    message: message
+                })
+            })
+            .then(async (response) => {
+                const result = await response.json();
+                if (response.ok && result.status === 'success') {
+                    feedback.className = 'form-feedback success';
+                    feedback.textContent = result.message || 'Thank you! I\'ll get back to you within 24 hours.';
+                    feedback.style.display = 'block';
+                    form.reset();
+                } else {
+                    // Extract validation messages if present
+                    let errorMsg = result.message || 'Failed to send message. Please try again.';
+                    if (result.errors && Array.isArray(result.errors)) {
+                        errorMsg = result.errors.map(err => err.message).join(' | ');
+                    }
+                    throw new Error(errorMsg);
+                }
+            })
+            .catch((error) => {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = error.message;
+                feedback.style.display = 'block';
+                // Customize styling for errors (red text fallback)
+                feedback.style.color = '#ef4444';
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
         }
     });
 }

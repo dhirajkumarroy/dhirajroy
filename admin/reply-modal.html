@@ -1,0 +1,228 @@
+<div id="message-detail-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3 id="modal-subject">Message Subject</h3>
+            <button onclick="closeModal()" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="message-meta-grid">
+                <div>
+                    <label>From</label>
+                    <p id="modal-sender">Sender Name</p>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <p><a id="modal-email" href="">email@domain.com</a></p>
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <p id="modal-phone">N/A</p>
+                </div>
+                <div>
+                    <label>Received</label>
+                    <p id="modal-date">Date Time</p>
+                </div>
+            </div>
+
+            <div class="message-body-content">
+                <label>Message</label>
+                <div id="modal-message-text" class="text-block">Message contents go here...</div>
+            </div>
+
+            <!-- Dynamic Reply History -->
+            <div id="modal-replies-container" style="display: none; margin-top: 20px;">
+                <label>Previous Replies</label>
+                <div id="modal-replies-list" class="replies-list">
+                    <!-- Replies will be appended here -->
+                </div>
+            </div>
+
+            <!-- Compose Reply -->
+            <div class="message-reply-box" style="margin-top: 20px;">
+                <label for="reply-textarea">Compose Email Reply</label>
+                <textarea id="reply-textarea" rows="5" placeholder="Type your professional response here..."></textarea>
+                <div class="reply-actions" style="margin-top: 10px; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button onclick="submitReply()" id="send-reply-btn" class="btn-reply-send">✉ Send Reply Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 20px;
+    }
+
+    .modal-card {
+        background: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        width: 100%;
+        max-width: 650px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-header h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #f3f4f6;
+    }
+
+    .modal-close-btn {
+        background: none;
+        border: none;
+        color: #9ca3af;
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+        color: #f3f4f6;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .message-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .message-meta-grid label, 
+    .message-body-content label,
+    .message-reply-box label,
+    #modal-replies-container label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #9ca3af;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+    }
+
+    .message-meta-grid p {
+        font-size: 0.9rem;
+        color: #f3f4f6;
+        word-break: break-all;
+    }
+
+    .message-meta-grid a {
+        color: #f97316;
+        text-decoration: none;
+    }
+
+    .message-meta-grid a:hover {
+        text-decoration: underline;
+    }
+
+    .text-block {
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #e5e7eb;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .replies-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .reply-item {
+        background: rgba(16, 185, 129, 0.03);
+        border: 1px solid rgba(16, 185, 129, 0.1);
+        border-left: 3px solid #10b981;
+        border-radius: 6px;
+        padding: 12px;
+    }
+
+    .reply-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: #9ca3af;
+        margin-bottom: 6px;
+    }
+
+    .reply-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #e5e7eb;
+        white-space: pre-wrap;
+    }
+
+    #reply-textarea {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 12px;
+        color: #f3f4f6;
+        font-size: 0.95rem;
+        outline: none;
+        resize: vertical;
+        transition: border-color 0.2s;
+    }
+
+    #reply-textarea:focus {
+        border-color: #f97316;
+    }
+
+    .btn-reply-send {
+        background: #f97316;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-reply-send:hover {
+        background: #ea580c;
+    }
+
+    .btn-reply-send:disabled {
+        background: #4b5563;
+        cursor: not-allowed;
+    }
+</style>
