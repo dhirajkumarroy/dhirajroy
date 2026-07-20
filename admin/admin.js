@@ -1,5 +1,6 @@
-// Shared Admin Panel Utility Script
-const API_BASE = '/api/v1';
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api/v1'
+    : 'https://api.dhirajroy.com/api/v1';
 
 // Redirect helper if not logged in
 function checkAuth() {
