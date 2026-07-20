@@ -264,7 +264,7 @@ function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         clearErrors();
 
@@ -292,15 +292,53 @@ function initContactForm() {
         if (!valid) return;
 
         const feedback = document.getElementById('form-feedback');
-        feedback.className = 'form-feedback success';
-        feedback.textContent = "Message sent successfully!";
-        feedback.style.display = 'block';
+        const submitBtn = form.querySelector('button[type="submit"]');
 
-        form.reset();
+        submitBtn.disabled = true;
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending Message...';
 
-        setTimeout(() => {
-            feedback.style.display = 'none';
-        }, 4000);
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000/api/v1'
+            : 'https://api.dhirajroy.com/api/v1';
+
+        try {
+            const response = await fetch(`${API_BASE}/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    full_name: name,
+                    email: email,
+                    subject: 'General Inquiry from Portfolio Landing Page',
+                    message: message
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.status === 'success') {
+                feedback.className = 'form-feedback success';
+                feedback.textContent = result.message || "Thank you! Your message has been submitted.";
+                feedback.style.display = 'block';
+                feedback.style.color = '#22c55e';
+                form.reset();
+            } else {
+                throw new Error(result.message || 'Failed to send message.');
+            }
+        } catch (err) {
+            feedback.className = 'form-feedback error';
+            feedback.textContent = err.message || 'Something went wrong. Please try again.';
+            feedback.style.display = 'block';
+            feedback.style.color = '#ef4444';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 5000);
+        }
     });
 }
 
