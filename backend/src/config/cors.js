@@ -5,6 +5,7 @@ const allowedOrigins = [
   process.env.ADMIN_URL,
   'https://www.dhirajroy.com',
   'https://admin.dhirajroy.com',
+  'https://dhirajroy-admin.vercel.app',
   'http://localhost:3000',
   'http://localhost:5000',
   'http://127.0.0.1:5500' // Live Server default
@@ -15,7 +16,7 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.includes(origin) || allowedOrigins.some(o => origin.startsWith(o))) {
+    if (allowedOrigins.includes(origin) || allowedOrigins.some(o => origin.startsWith(o)) || origin.endsWith('.vercel.app')) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
