@@ -1,6 +1,6 @@
 // Main JavaScript (Production-ready)
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
     loadComponents();
     loadProjects();
     initContactForm();
@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyLoading();
     initScrollAnimations();
     initTheme();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
 
 /* =========================
    THEME STYLING & PERSISTENCE
