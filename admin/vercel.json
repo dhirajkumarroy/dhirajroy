@@ -1,0 +1,12 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/dashboard.html", "destination": "/dashboard.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/login.html", "destination": "/index.html" },
+    { "source": "/login", "destination": "/index.html" },
+    { "source": "/messages.html", "destination": "/messages.html" },
+    { "source": "/messages", "destination": "/messages.html" }
+  ]
+}
