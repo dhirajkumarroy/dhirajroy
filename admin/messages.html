@@ -315,8 +315,8 @@
     <nav class="sidebar">
         <div class="sidebar-brand">Dhiraj <span>Roy</span></div>
         <ul class="sidebar-menu">
-            <li><a href="/admin/dashboard.html">🏠 Dashboard</a></li>
-            <li><a href="/admin/messages.html" class="active">✉ Messages</a></li>
+            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+            <li><a href="messages.html" class="active">✉ Messages</a></li>
         </ul>
         <div class="sidebar-footer">
             <button onclick="adminLogout()" class="btn-logout">🚪 Logout</button>
@@ -391,7 +391,7 @@
     <!-- Reply Modal Injection target -->
     <div id="modal-container"></div>
 
-    <script src="/admin/admin.js"></script>
+    <script src="admin.js"></script>
     <script>
         checkAuth();
 
@@ -408,7 +408,7 @@
         // Fetch and inject the modal layout dynamically
         async function initModal() {
             try {
-                const res = await fetch('/admin/reply-modal.html');
+                const res = await fetch('reply-modal.html');
                 const html = await res.text();
                 document.getElementById('modal-container').innerHTML = html;
             } catch (err) {

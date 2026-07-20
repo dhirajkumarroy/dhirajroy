@@ -5,7 +5,7 @@ const API_BASE = window.location.hostname === 'localhost' || window.location.hos
 // Redirect helper if not logged in
 function checkAuth() {
     if (!localStorage.getItem('admin_token')) {
-        window.location.href = '/admin/login.html';
+        window.location.href = 'login.html';
     }
 }
 
@@ -57,7 +57,7 @@ async function adminFetch(url, options = {}) {
 function logoutLocal() {
     localStorage.removeItem('admin_token');
     localStorage.removeItem('admin_user');
-    window.location.href = '/admin/login.html';
+    window.location.href = 'login.html';
 }
 
 async function adminLogout() {

@@ -177,7 +177,7 @@
 
         // Check if already logged in
         if (localStorage.getItem('admin_token')) {
-            window.location.href = '/admin/dashboard.html';
+            window.location.href = 'dashboard.html';
         }
 
         const form = document.getElementById('login-form');
@@ -215,7 +215,7 @@
                     localStorage.setItem('admin_user', JSON.stringify(result.data.admin));
 
                     setTimeout(() => {
-                        window.location.href = '/admin/dashboard.html';
+                        window.location.href = 'dashboard.html';
                     }, 1000);
                 } else {
                     throw new Error(result.message || 'Authentication failed.');
