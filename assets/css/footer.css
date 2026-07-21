@@ -38,12 +38,16 @@
     margin: 0;
 }
 
-.footer-section ul.quick-links-grid {
+.quick-links-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: column;
-    grid-template-rows: repeat(3, auto);
-    gap: 0.65rem 1.5rem;
+    gap: 0.5rem 1.5rem;
+}
+
+.quick-links-col {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer-section ul li {
