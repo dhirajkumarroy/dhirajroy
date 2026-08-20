@@ -13,7 +13,7 @@ const projectsData = [
       "Intuitive dashboard optimized for single-handed mobile navigation layout"
     ],
     architecture: "Clean architecture using Flutter BLoC state management, repository design patterns, and real-time database sync layers.",
-    github: "https://github.com/dhirajkumarroy/auconnect",
+    github: "https://github.com/dhirajkumarroy",
     demo: "https://auconnect.dhirajroy.com",
     caseStudy: "/projects.html#auconnect",
     category: "mobile"
@@ -31,8 +31,8 @@ const projectsData = [
       "Interactive student progress charts and monthly test reporting boards"
     ],
     architecture: "Model-View-Controller backend utilizing Laravel Eloquent ORM, combined with a dynamic React front-end powered by CSS variables.",
-    github: "https://github.com/dhirajkumarroy/aunext",
-    demo: "https://aunext.dhirajroy.com",
+    github: "https://github.com/dhirajkumarroy",
+    demo: "https://aunext.in",
     caseStudy: "/projects.html#aunext",
     category: "fullstack"
   },
@@ -40,7 +40,7 @@ const projectsData = [
     id: 3,
     title: "AUCart",
     description: "A campus e-commerce marketplace built using Node.js, Express, React, and MongoDB, supporting multi-seller setups, transaction dashboards, and payout schedules.",
-    status: "Coming Soon",
+    status: "Live",
     techBadges: ["React", "Node.js", "Express", "MongoDB", "Razorpay"],
     features: [
       "Multi-vendor product management portals with individual stock logging",
@@ -49,8 +49,8 @@ const projectsData = [
       "Real-time chat modules connecting buyers and sellers directly"
     ],
     architecture: "Decoupled MERN stack architecture leveraging JWT token validation, mongoose models, and RESTful service orchestration.",
-    github: "https://github.com/dhirajkumarroy/au-kart",
-    demo: null,
+    github: "https://github.com/dhirajkumarroy",
+    demo: "https://aukart-daily.vercel.app/",
     caseStudy: "/projects.html#aucart",
     category: "fullstack"
   }
