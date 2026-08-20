@@ -38,7 +38,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "AUCart",
+    title: "AUKart",
     description: "A campus e-commerce marketplace built using Node.js, Express, React, and MongoDB, supporting multi-seller setups, transaction dashboards, and payout schedules.",
     status: "Live",
     techBadges: ["React", "Node.js", "Express", "MongoDB", "Razorpay"],
@@ -51,7 +51,7 @@ const projectsData = [
     architecture: "Decoupled MERN stack architecture leveraging JWT token validation, mongoose models, and RESTful service orchestration.",
     github: "https://github.com/dhirajkumarroy",
     demo: "https://aukart-daily.vercel.app/",
-    caseStudy: "/projects.html#aucart",
+    caseStudy: "/projects.html#aukart",
     category: "fullstack"
   }
 ];
